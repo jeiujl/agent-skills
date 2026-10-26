@@ -8,6 +8,8 @@ How the skills in `library/` were checked before being added, and what to know a
 - Every skill's name and description was read, and every flagged file was read in full.
 - Result: **nothing malicious found, and no skill excluded for security reasons.** Every flag was a false positive: security skills describing attacks, skills warning Claude *not* to follow instructions hidden in web pages, documentation examples, or official installers (e.g. `uv`).
 
+The four skills added by hand later (`learn`, `humanizer`, `study-guide-builder`, `false-flag-humanizer`) were checked by reading every file in full. Their two scripts use only the Python standard library, make no network calls, and only read the input file and write the output files you name.
+
 ## Skills that include scripts
 
 Most skills are just instructions. These also ship scripts that Claude may run when you use the skill. Scripts that use the network only contact the services listed.
@@ -29,6 +31,7 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `diagnosing-bugs` | 1 | none |  |
 | `diagram-design` | 6 | none |  |
 | `diagramming-code` | 2 | none |  |
+| `false-flag-humanizer` | 1 | none | Python 3 |
 | `frontend-design-direction` | 1 | none |  |
 | `frontend-slides` | 4 | none |  |
 | `git-guardrails-claude-code` | 1 | none |  |
@@ -55,6 +58,7 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `stitch-react-components` | 2 | local only | Google Stitch MCP server |
 | `stitch-react-native` | 2 | local only | Google Stitch MCP server |
 | `stitch-upload-to-stitch` | 1 | stitch.googleapis.com | Google Stitch MCP server |
+| `study-guide-builder` | 1 | none | Python 3 |
 | `supply-chain-risk-auditor` | 8 | registry.npmjs.org, api.github.com, api.osv.dev, api.npmjs.org, pypi.org, proxy.golang.org |  |
 | `systematic-debugging` | 2 | none |  |
 | `taste-application` | 61 | fal.ai | optional FAL_KEY for images |

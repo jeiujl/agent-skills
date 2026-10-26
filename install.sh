@@ -40,7 +40,7 @@ With no options, installs the core set into Claude Code and Codex.
   -h, --help             Show this help
 
 Categories: design motion html frontend backend tokens workflow testing
-            security marketing seo ads research automation writing agents
+            security marketing seo ads research learning automation writing agents
 EOF
 }
 

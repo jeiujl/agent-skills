@@ -2352,6 +2352,20 @@
   "core": true
  },
  {
+  "name": "false-flag-humanizer",
+  "kind": "library",
+  "category": "writing",
+  "source": "jeiujl (supplied)",
+  "license": "none stated (supplied by owner)",
+  "commit": "",
+  "path": "library/false-flag-humanizer",
+  "original": "false-flag-humanizer",
+  "desc": "Use when someone's own human-written essay, report, or assignment was flagged as AI-generated (or they expect it to be) by a detector such as GPTZero, Turnitin, ZeroGPT, Scribbr, Copyleaks, QuillBot, or Grammarly.",
+  "needs": "Python 3",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "find-animation-opportunities",
   "kind": "library",
   "category": "motion",
@@ -3290,6 +3304,20 @@
   "core": false
  },
  {
+  "name": "humanizer",
+  "kind": "library",
+  "category": "writing",
+  "source": "blader/humanizer",
+  "license": "MIT",
+  "commit": "",
+  "path": "library/humanizer",
+  "original": "humanizer",
+  "desc": "Rewrite AI-sounding text so it reads like the writer without changing what it says.",
+  "needs": "",
+  "scripts": false,
+  "core": true
+ },
+ {
   "name": "iannuttall-seo",
   "kind": "library",
   "category": "seo",
@@ -3596,6 +3624,20 @@
   "needs": "",
   "scripts": false,
   "core": false
+ },
+ {
+  "name": "learn",
+  "kind": "library",
+  "category": "learning",
+  "source": "Anthropic (supplied)",
+  "license": "Apache-2.0",
+  "commit": "",
+  "path": "library/learn",
+  "original": "learn",
+  "desc": "Use this skill when the user wants intellectual understanding — learning how or why something works, not getting a task done or soliciting Claude's judgment.",
+  "needs": "",
+  "scripts": false,
+  "core": true
  },
  {
   "name": "link-building",
@@ -6213,6 +6255,20 @@
   "desc": "Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.",
   "needs": "",
   "scripts": false,
+  "core": true
+ },
+ {
+  "name": "study-guide-builder",
+  "kind": "library",
+  "category": "learning",
+  "source": "jeiujl (supplied)",
+  "license": "none stated (supplied by owner)",
+  "commit": "",
+  "path": "library/study-guide-builder",
+  "original": "study-guide-builder",
+  "desc": "Turns course materials (lecture slides, notes, PDFs, textbook chapters, syllabi, past exams, problem sets, recordings' transcripts) into a study guide shaped to the learner's preferences plus a dated study plan up to the exam.",
+  "needs": "Python 3",
+  "scripts": true,
   "core": true
  },
  {

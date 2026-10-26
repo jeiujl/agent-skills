@@ -14,3 +14,5 @@ python3 validate.py        # check every skill's frontmatter
 ```
 
 Then **read the scan results** (`build/scan.json`) and any new or changed scripts before copying `out/agent-skills/*` over the repo. What to include from each source, renames and the core set are set at the top of `build.py` and `generate.py`. Needs Python 3 with PyYAML.
+
+`learn`, `humanizer`, `study-guide-builder` and `false-flag-humanizer` were added to `library/` by hand (not from `sources.txt`), along with their rows in `index.tsv`, `catalog.json`, `CATALOG.md` and `profiles/core.txt`. A rebuild from the sources doesn't know about them, so copy them back over the rebuilt output.

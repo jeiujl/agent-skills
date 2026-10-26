@@ -1,6 +1,6 @@
 # Catalog
 
-483 skills in `library/`, plus 27 installed from their source repo. **42** are in the core set (★), installed by default.
+487 skills in `library/`, plus 27 installed from their source repo. **46** are in the core set (★), installed by default.
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -521,6 +521,13 @@ Install any of them by name or by category, e.g. `./install.sh --add gsap-timeli
 | `market-research` | Conduct market research, competitive analysis, investor due diligence, and industry intelligence with source attribution and decision-oriented summaries. | [affaan-m/ecc](https://github.com/affaan-m/ecc) |  |
 | `research` | Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. | [mattpocock/skills](https://github.com/mattpocock/skills) |  |
 
+## Learning & study (`learning`, 2)
+
+| Skill | What it does | Source | Needs |
+|---|---|---|---|
+| ★ `learn` | Use this skill when the user wants intellectual understanding — learning how or why something works, not getting a task done or soliciting Claude's judgment. | Anthropic · supplied by owner |  |
+| ★ `study-guide-builder` | Turns course materials (lecture slides, notes, PDFs, textbook chapters, syllabi, past exams, problem sets, recordings' transcripts) into a study guide shaped to the learner's prefe | supplied by owner | Python 3 |
+
 ## Automation & browser agents (`automation`, 20)
 
 | Skill | What it does | Source | Needs |
@@ -546,11 +553,13 @@ Install any of them by name or by category, e.g. `./install.sh --add gsap-timeli
 | `qa` | QA-test a website or web app and return a 1-5 quality score (5 = flawless, 1 = broken) with evidence. | [browser-use/browser-use](https://github.com/browser-use/browser-use) | uv + browser-use (it offers to install uv) |
 | `using-n8n-mcp-skills` | Use when building, editing, validating, testing, or debugging an n8n workflow through the n8n-mcp MCP server — designing a flow, configuring a node, writing an expression or Code n | [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) | n8n-mcp server (N8N_API_KEY) |
 
-## Writing, docs & decks (`writing`, 25)
+## Writing, docs & decks (`writing`, 27)
 
 | Skill | What it does | Source | Needs |
 |---|---|---|---|
 | ★ `copywriting` | When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
+| ★ `false-flag-humanizer` | Use when someone's own human-written essay, report, or assignment was flagged as AI-generated (or they expect it to be) by a detector such as GPTZero, Turnitin, ZeroGPT, Scribbr, C | supplied by owner | Python 3 |
+| ★ `humanizer` | Rewrite AI-sounding text so it reads like the writer without changing what it says. | [blader/humanizer](https://github.com/blader/humanizer) |  |
 | ★ `writing-plans` | Use when you have a spec or requirements for a multi-step task, before touching code | [obra/superpowers](https://github.com/obra/superpowers) |  |
 | `antislop-copywriting` | Copy and text skill for antislop. | [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/anti-slop) |  |
 | `antislop-human` | Human and accessibility skill for antislop. | [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/anti-slop) |  |

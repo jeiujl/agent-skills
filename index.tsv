@@ -167,6 +167,7 @@ entry-point-analyzer	library	security	trailofbits/skills	196a9073ab10d35bacf111f
 error-handling	library	workflow	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/error-handling
 events	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/events
 executing-plans	library	workflow	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/executing-plans
+false-flag-humanizer	library	writing	jeiujl (supplied)		library/false-flag-humanizer
 find-animation-opportunities	library	motion	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/find-animation-opportunities
 find-skills	library	agents	vercel-labs/skills	a80e4c9d12d607631249d4d7d059f835d4b2f13a	skills/find-skills
 finishing-a-development-branch	library	workflow	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/finishing-a-development-branch
@@ -234,6 +235,7 @@ html-web-proto-editorial	library	html	nexu-io/html-anything	975fb3bcb98f1777781f
 html-web-proto-soft	library	html	nexu-io/html-anything	975fb3bcb98f1777781fb4c738902d36e32c8c46	next/src/lib/templates/skills/web-proto-soft
 html-weekly-update	library	html	nexu-io/html-anything	975fb3bcb98f1777781fb4c738902d36e32c8c46	next/src/lib/templates/skills/weekly-update
 html-wireframe-sketch	library	html	nexu-io/html-anything	975fb3bcb98f1777781fb4c738902d36e32c8c46	next/src/lib/templates/skills/wireframe-sketch
+humanizer	library	writing	blader/humanizer		library/humanizer
 iannuttall-seo	library	seo	iannuttall/seo	69a8ea2f86909a4054ba7bc72eadd9fe86053407	skills/seo
 idea-refine	library	workflow	addyosmani/agent-skills	aeac41d4d005999432bb7312f7ff06383a91d59d	skills/idea-refine
 image	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/image
@@ -256,6 +258,7 @@ launch	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9
 lead-intelligence	library	marketing	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/lead-intelligence
 lead-magnets	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/lead-magnets
 lean-build	library	tokens	JuliusBrussee/caveman	b4531dfc05a3ef0ba93b57e8bfa5f48564a4b4d6	skills/lean-build
+learn	library	learning	Anthropic (supplied)		library/learn
 link-building	library	seo	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/link-building
 liquid-glass-design	library	design	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/liquid-glass-design
 loop-me	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/in-progress/loop-me
@@ -443,6 +446,7 @@ stitch-react-components	library	frontend	google-labs-code/stitch-skills	0337446d
 stitch-react-native	library	frontend	google-labs-code/stitch-skills	0337446dadde6f8c94210444e2aa9d546126480f	plugins/stitch-build/skills/react-native
 stitch-upload-to-stitch	library	design	google-labs-code/stitch-skills	0337446dadde6f8c94210444e2aa9d546126480f	plugins/stitch-design/skills/upload-to-stitch
 strategic-compact	library	tokens	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/strategic-compact
+study-guide-builder	library	learning	jeiujl (supplied)		library/study-guide-builder
 subagent-driven-development	library	agents	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/subagent-driven-development
 supabase	library	backend	supabase/agent-skills	c9be0e931b7930f7d02126d04774d904c381e7d7	skills/supabase
 supabase-postgres-best-practices	library	backend	supabase/agent-skills	c9be0e931b7930f7d02126d04774d904c381e7d7	skills/supabase-postgres-best-practices

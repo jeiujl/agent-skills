@@ -1,9 +1,9 @@
 # Agent skills
 
-A library of **510 agent skills** for **Claude Code** and **Codex**, collected from 41 open-source projects. It focuses on design and UI/UX, animation, token savers, and coding workflow, plus marketing, SEO, automation and security.
+A library of **514 agent skills** for **Claude Code** and **Codex**, collected from 42 open-source projects plus a few added by hand. It focuses on design and UI/UX, animation, token savers, and coding workflow, plus marketing, SEO, automation and security.
 
-- **483** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
-- **42** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
+- **487** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
+- **46** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
 - Everything was checked before being added. See [`docs/security-review.md`](docs/security-review.md).
 
 Browse everything in **[CATALOG.md](CATALOG.md)**.
@@ -46,11 +46,11 @@ Use a skill name, a category, or a profile. Commas separate several.
 | Preview changes | add `-DryRun` | add `--dry-run` |
 | Remove everything it installed | `.\install.ps1 -Reset` | `./install.sh --reset` |
 
-**Categories:** `design` `motion` `html` `frontend` `backend` `tokens` `workflow` `testing` `security` `marketing` `seo` `ads` `research` `automation` `writing` `agents`
+**Categories:** `design` `motion` `html` `frontend` `backend` `tokens` `workflow` `testing` `security` `marketing` `seo` `ads` `research` `learning` `automation` `writing` `agents`
 
 The installer only ever replaces or removes skills *it* installed (it keeps a list in each skills folder), so your own skills are safe. If you already have a skill with the same name, it's skipped.
 
-## Why only 42 are active
+## Why only 46 are active
 
 Every installed skill's name and description is loaded into every session, so 500 active skills would cost thousands of tokens each time. They'd also make it harder for Claude to pick the right one. Keep the active set to what you use, and add a category when a project needs it, such as `seo` for an SEO job.
 
@@ -63,6 +63,7 @@ Every installed skill's name and description is loaded into every session, so 50
 - **Research & skills:** `last30days`, `deep-research`, `skill-creator`, `find-skills`
 - **Marketing:** `marketing-psychology`, `copywriting`, `cro`, `seo-audit`, `ai-seo`, `pricing`
 - **Automation & security:** `n8n-workflow-patterns`, `agent-browser`, `security-review`
+- **Learning & writing:** `learn`, `study-guide-builder`, `humanizer`, `false-flag-humanizer`
 
 Edit `profiles/core.txt` to change it. Some skills need an extra tool or API key; see the **Needs** column in the catalog (e.g. `graphify` needs `pip install graphifyy`).
 

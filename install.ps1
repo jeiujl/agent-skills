@@ -21,7 +21,7 @@
   powershell -ExecutionPolicy Bypass -File .\install.ps1
 
   Categories: design motion html frontend backend tokens workflow testing
-              security marketing seo ads research automation writing agents
+              security marketing seo ads research learning automation writing agents
 #>
 [CmdletBinding()]
 param(

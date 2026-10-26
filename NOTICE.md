@@ -14,6 +14,7 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | MIT | 25 |
 | [affaan-m/ecc](https://github.com/affaan-m/ecc) | MIT | 71 |
 | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | 14 |
+| [blader/humanizer](https://github.com/blader/humanizer) | MIT | 1 |
 | [browser-use/browser-use](https://github.com/browser-use/browser-use) | MIT | 2 |
 | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) | MIT | 1 |
 | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | MIT | 1 |
@@ -42,6 +43,8 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [vercel-labs/skills](https://github.com/vercel-labs/skills) | MIT | 1 |
 | [wheresryan22/anatomy](https://github.com/wheresryan22/anatomy) | MIT | 1 |
 | [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides) | MIT | 1 |
+
+Added by hand from files the repo owner supplied, also unchanged: `learn` (Anthropic, Apache-2.0; licence in `library/learn/LICENSE.txt`), `study-guide-builder` and `false-flag-humanizer` (supplied by the owner, no licence file).
 
 Skills listed as "installed from source" in the catalog have no licence that allows copying them here, so the installer downloads them from their own repository, pinned to the commit that was reviewed.
 
