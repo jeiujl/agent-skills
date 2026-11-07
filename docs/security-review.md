@@ -8,6 +8,10 @@ How the skills in `library/` were checked before being added, and what to know a
 - Every skill's name and description was read, and every flagged file was read in full.
 - Result: **nothing malicious found, and no skill excluded for security reasons.** Every flag was a false positive: security skills describing attacks, skills warning Claude *not* to follow instructions hidden in web pages, documentation examples, or official installers (e.g. `uv`).
 
+`reverse-engineer-anything` (REA) was taken from the published npm package `rea-agents` 6.8.0, whose download matched npm's recorded sha512 hash, and every file was scanned and read. It is instructions only, with no scripts. The REA tool it works with is not in this repo: it is an MCP server that runs analysis tools (and, with your approval, Ghidra, Hopper or IDA) on files on your computer. The installer only runs its official setup when you pass `--setup-rea` / `-SetupRea`, pinned to version 6.8.0, and that setup asks before changing anything.
+
+The 283 agents in `agents/` (The Agency) were scanned with the same checks. They are Markdown instructions with no scripts or binaries; no names clash. The 21 flagged lines were all false positives: security agents describing attacks they defend against (exfiltration, persistence checks during incident response, detection rules for `Invoke-Expression`), a prompt-engineering agent that tests "ignore previous instructions" attacks, and CI examples using a keychain profile. 17 agents declare a `tools:` list (Read, Write, Edit, WebFetch, WebSearch, and for 7 of them Bash), which limits what those agents may use in Claude Code. The Codex `.toml` files are generated from the same text by `maintenance/build_agents.py`.
+
 The four skills added by hand later (`learn`, `humanizer`, `study-guide-builder`, `false-flag-humanizer`) were checked by reading every file in full. Their two scripts use only the Python standard library, make no network calls, and only read the input file and write the output files you name.
 
 ## Skills that include scripts

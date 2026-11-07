@@ -5152,6 +5152,20 @@
   "core": false
  },
  {
+  "name": "reverse-engineer-anything",
+  "kind": "library",
+  "category": "security",
+  "source": "morluto/rea",
+  "license": "MIT",
+  "commit": "",
+  "path": "library/reverse-engineer-anything",
+  "original": "reverse-engineer-anything",
+  "desc": "Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA (Reverse Engineer Anything).",
+  "needs": "REA MCP server (npx rea-agents setup), Node 22.23+",
+  "scripts": false,
+  "core": true
+ },
+ {
   "name": "review-animations",
   "kind": "library",
   "category": "motion",

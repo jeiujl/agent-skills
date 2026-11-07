@@ -61,6 +61,29 @@ An MCP server plus hooks that store large outputs outside the conversation and l
 npm install -g context-mode
 ```
 
+## REA (Reverse Engineer Anything): reverse engineering tools for your agent
+An MCP server and CLI that lets Claude Code and Codex inspect apps and binaries on your computer: native programs, Electron/JavaScript apps, .NET, Android APKs, firmware, saved network captures and websites. Analysis runs locally; your agent gets the results. Its skill, `reverse-engineer-anything`, is already in this library's core set.
+
+> ⚠️ **Official sources only.** Install REA only from npm [`rea-agents`](https://www.npmjs.com/package/rea-agents) or [github.com/morluto/rea](https://github.com/morluto/rea). Look-alike "reverse engineer anything" repos exist, some offering Windows zip downloads; don't run those.
+>
+> **Authorised use only.** Use it on software you own or are allowed to analyse (your own apps, security research, malware analysis, interoperability, CTFs). REA's own terms rule out DRM or licence-check circumvention, game cheats and bypassing access controls.
+
+Needs Node.js **22.23.4+**, **24.22.1+** or **26.12.1+** ([nodejs.org](https://nodejs.org)). Then run, from this repo:
+```
+.\install.ps1 -SetupRea          # Windows
+./install.sh --setup-rea         # Mac / Linux
+```
+That runs REA's official setup pinned to the reviewed release: `npx --yes rea-agents@6.8.0 setup --skill=false`. Setup lists the agents it can connect (Claude Code, Codex, Cursor and others), shows the exact config changes and asks before writing anything. `--skill=false` is there because this library already installs the matching skill. Restart your agents afterwards and check that REA's tools appear.
+
+Optional analysis engines, used only for the tasks that need them (REA never installs these for you, except Hopper with your approval):
+- **Ghidra** (free, needs a Java JDK), **Hopper** or **IDA** for native binaries
+- **JADX** and a JDK for Android APKs; a Chrome-family browser for websites
+- JavaScript and Electron apps need nothing extra
+
+Check what's missing for a task: `npx rea-agents@6.8.0 doctor --json`. Remove REA's registrations: `npx rea-agents@6.8.0 uninstall` (this leaves the library's skill in place; remove it with `./install.sh --remove reverse-engineer-anything`).
+
+**Updating to a newer REA:** run `npx rea-agents@latest setup` yourself. That also installs REA's newer skill, so remove this library's copy first (`./install.sh --remove reverse-engineer-anything`) so the two don't overwrite each other.
+
 ## Plugin versions of skills in this library
 Use one of these *instead of* the copies in `library/` if you'd like automatic updates from the authors:
 ```

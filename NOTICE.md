@@ -30,6 +30,7 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT | 1 |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | MIT | 38 |
 | [miqdadbadjuber/anti-slop](https://github.com/miqdadbadjuber/anti-slop) | MIT | 6 |
+| [morluto/rea](https://github.com/morluto/rea) | MIT | 1 |
 | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | MIT | 1 |
 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT | 7 |
 | [nexu-io/html-anything](https://github.com/nexu-io/html-anything) | Apache-2.0 | 35 |
@@ -48,3 +49,8 @@ Added by hand from files the repo owner supplied, also unchanged: `learn` (Anthr
 
 Skills listed as "installed from source" in the catalog have no licence that allows copying them here, so the installer downloads them from their own repository, pinned to the commit that was reviewed.
 
+`reverse-engineer-anything` is copied unchanged from the published npm package `rea-agents` 6.8.0 (the release `--setup-rea` installs), from [morluto/rea](https://github.com/morluto/rea), MIT; licence in `licenses/morluto__rea.txt`.
+
+## Agents
+
+`agents/claude/` holds the 283 agents of [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (The Agency, MIT, copyright AgentLand Contributors), copied unchanged from commit `b859c515d813efcfc4755d3471dd9e7686c7706d`. `agents/codex/` holds the same agents converted to Codex's custom-agent TOML format by `maintenance/build_agents.py` (name, description and the agent's instructions, nothing else changed). Licence in `licenses/msitarzewski__agency-agents.txt`.

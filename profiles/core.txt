@@ -33,6 +33,7 @@ planning-with-files
 ponytail
 pricing
 requesting-code-review
+reverse-engineer-anything
 security-review
 seo-audit
 skill-creator

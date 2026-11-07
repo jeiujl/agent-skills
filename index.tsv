@@ -367,6 +367,7 @@ reproduce-bug	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c0
 requesting-code-review	library	testing	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/requesting-code-review
 research	library	research	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/research
 retro	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/retro
+reverse-engineer-anything	library	security	morluto/rea		library/reverse-engineer-anything
 review-animations	library	motion	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/review-animations
 review-walkthrough	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/review-walkthrough/skills/review-walkthrough
 revops	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/revops
