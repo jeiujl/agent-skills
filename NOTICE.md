@@ -7,6 +7,7 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) | MIT | 34 |
 | [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) | MIT | 33 |
 | [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | Apache-2.0 | 1 |
+| [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | MIT | 11 |
 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Apache-2.0 | 22 |
 | [LinklyAI/best-skills](https://github.com/LinklyAI/best-skills) | CC-BY-4.0 | 1 |
 | [Nutlope/hallmark](https://github.com/Nutlope/hallmark) | MIT | 1 |

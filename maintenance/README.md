@@ -17,6 +17,8 @@ Then **read the scan results** (`build/scan.json`) and any new or changed script
 
 `learn`, `humanizer`, `study-guide-builder` and `false-flag-humanizer` were added to `library/` by hand (not from `sources.txt`), along with their rows in `index.tsv`, `catalog.json`, `CATALOG.md` and `profiles/core.txt`. A rebuild from the sources doesn't know about them, so copy them back over the rebuilt output.
 
+The 11 `sales` skills (`contract-writer`, `follow-up`, `forecaster`, `pipeline`, `proposal-writer`, `prospector`, `record-keeper`, `researcher`, `sales-coach`, `scheduler`, `win-back`) were added by hand from [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) at commit `0b0107690e202010710a59eb7d0b47d331255e59`, with their rows in `index.tsv`, `catalog.json`, `CATALOG.md` and `profiles/core.txt`. Keep their folder names unchanged: their scripts load `../pipeline/deals.py` by relative path.
+
 `reverse-engineer-anything` was also added by hand, from the npm package `rea-agents` (it ships in `package/skills/`). To update it, download the new version's tarball, check its hash against `npm view rea-agents@<version> dist.integrity`, copy `package/skills/reverse-engineer-anything` over `library/`, and change `REA_VERSION` in `install.sh` and `$ReaVersion` in `install.ps1` to the same version, so the skill and the server always match.
 
 ## Agents (The Agency)

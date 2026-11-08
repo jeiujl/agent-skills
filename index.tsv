@@ -120,6 +120,7 @@ content-strategy	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79b
 context-budget	library	tokens	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/context-budget
 context-engineering	library	tokens	addyosmani/agent-skills	aeac41d4d005999432bb7312f7ff06383a91d59d	skills/context-engineering
 contract-first	library	workflow	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/contract-first
+contract-writer	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	contract-writer
 conversion-tracking	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/conversion-tracking
 copy-editing	library	writing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/copy-editing
 copywriting	library	writing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/copywriting
@@ -171,6 +172,8 @@ false-flag-humanizer	library	writing	jeiujl (supplied)		library/false-flag-human
 find-animation-opportunities	library	motion	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/find-animation-opportunities
 find-skills	library	agents	vercel-labs/skills	a80e4c9d12d607631249d4d7d059f835d4b2f13a	skills/find-skills
 finishing-a-development-branch	library	workflow	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/finishing-a-development-branch
+follow-up	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	follow-up
+forecaster	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	forecaster
 free-tools	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/free-tools
 frontend-a11y	library	frontend	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/frontend-a11y
 frontend-design	library	design	anthropics/skills	dbd4588f9e1033efb41dad4bef2f7947c8993d44	skills/frontend-design
@@ -304,6 +307,7 @@ paywalls	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12
 pdf	remote	writing	anthropics/skills	dbd4588f9e1033efb41dad4bef2f7947c8993d44	skills/pdf
 performance-optimization	library	frontend	addyosmani/agent-skills	aeac41d4d005999432bb7312f7ff06383a91d59d	skills/performance-optimization
 pick-ui-library	library	design	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/pick-ui-library
+pipeline	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	pipeline
 planning-and-task-breakdown	library	workflow	addyosmani/agent-skills	aeac41d4d005999432bb7312f7ff06383a91d59d	skills/planning-and-task-breakdown
 planning-with-files	library	workflow	OthmanAdi/planning-with-files	99402ce1e6a96795749113c75c02b6d72dfd42bc	skills/planning-with-files
 ponytail	library	tokens	dietrichgebert/ponytail	09c434ab73ca43761c5d8b0c5d341926c2fba710	skills/ponytail
@@ -336,7 +340,9 @@ programmatic-seo	library	seo	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a
 prompt-caching-strategy	library	tokens	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/prompt-caching-strategy
 prompt-optimizer	library	agents	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/prompt-optimizer
 property-based-testing	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/property-based-testing/skills/property-based-testing
+proposal-writer	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	proposal-writer
 prospecting	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/prospecting
+prospector	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	prospector
 prototype	library	design	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/prototype
 public-relations	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/public-relations
 python-patterns	library	backend	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/python-patterns
@@ -346,6 +352,7 @@ react-performance	library	frontend	affaan-m/ecc	90606c8315ee09cafc303515c5f33024
 react-testing	library	testing	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/react-testing
 react-vite-dashboard	library	frontend	google-labs-code/stitch-skills	0337446dadde6f8c94210444e2aa9d546126480f	plugins/stitch-build/skills/react-vite-dashboard
 receiving-code-review	library	testing	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/receiving-code-review
+record-keeper	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	record-keeper
 reddit-automation	library	marketing	flowkit-labs/skills	0c9e2b63f504a296a86e45ed3a60a426dd979ca6	reddit-automation
 referrals	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/referrals
 regex-vs-llm-structured-text	library	tokens	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/regex-vs-llm-structured-text
@@ -366,15 +373,18 @@ repo-scan	library	workflow	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882
 reproduce-bug	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/patching-bugs/skills/reproduce-bug
 requesting-code-review	library	testing	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/requesting-code-review
 research	library	research	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/research
+researcher	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	researcher
 retro	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/retro
 reverse-engineer-anything	library	security	morluto/rea		library/reverse-engineer-anything
 review-animations	library	motion	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/review-animations
 review-walkthrough	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/review-walkthrough/skills/review-walkthrough
 revops	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/revops
 safe-refactor	library	tokens	JuliusBrussee/caveman	b4531dfc05a3ef0ba93b57e8bfa5f48564a4b4d6	skills/safe-refactor
+sales-coach	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	sales-coach
 sales-enablement	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/sales-enablement
 sarif-parsing	library	security	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/static-analysis/skills/sarif-parsing
 scaffold-exercises	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/misc/scaffold-exercises
+scheduler	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	scheduler
 schema	library	seo	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/schema
 search-first	library	tokens	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/search-first
 second-opinion	library	testing	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/second-opinion/skills/second-opinion
@@ -504,6 +514,7 @@ wayfinder	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c
 web-artifacts-builder	library	frontend	anthropics/skills	dbd4588f9e1033efb41dad4bef2f7947c8993d44	skills/web-artifacts-builder
 web-design-guidelines	remote	design	vercel-labs/agent-skills	063bee94c3f4df8453406c830b0a7df0f2860278	skills/web-design-guidelines
 webapp-testing	library	testing	anthropics/skills	dbd4588f9e1033efb41dad4bef2f7947c8993d44	skills/webapp-testing
+win-back	library	sales	Jakeschincariol/closer-skill	0b0107690e202010710a59eb7d0b47d331255e59	win-back
 wizard	library	agents	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/wizard
 write-swift	library	frontend	emilkowalski/skills	2d228630ba1446365f614a108cb8252f1feda202	skills/write-swift
 writing-beats	library	writing	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/in-progress/writing-beats

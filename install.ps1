@@ -27,7 +27,7 @@
   powershell -ExecutionPolicy Bypass -File .\install.ps1
 
   Skill categories: design motion html frontend backend tokens workflow testing
-                    security marketing seo ads research learning automation writing agents
+                    security marketing sales seo ads research learning automation writing agents
   Agent divisions:  academic design engineering finance game-development gis healthcare
                     marketing paid-media product project-management research sales
                     security spatial-computing specialized support testing

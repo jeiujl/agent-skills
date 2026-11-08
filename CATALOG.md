@@ -1,6 +1,6 @@
 # Catalog
 
-488 skills in `library/`, plus 27 installed from their source repo. **47** are in the core set (★), installed by default. The 283 agents from The Agency are listed [at the end](#agents-the-agency).
+499 skills in `library/`, plus 27 installed from their source repo. **58** are in the core set (★), installed by default. The 283 agents from The Agency are listed [at the end](#agents-the-agency).
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -418,6 +418,24 @@ Install any of them by name or by category, e.g. `./install.sh --add gsap-timeli
 | `sms` | When the user wants to plan, build, or optimize SMS, MMS, or WhatsApp marketing — including welcome flows, abandoned cart texts, post-purchase, win-back, promotional sends, or tran | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 | `social` | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or Facebook, or wants to do social listening and engag | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 | `social-publisher` | Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. | [affaan-m/ecc](https://github.com/affaan-m/ecc) |  |
+
+## Sales (`sales`, 11)
+
+The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills that share one CRM file (`closer/pipeline.json`) in your project folder. Install them together with `./install.sh --add sales`. Every email, invite and contract waits for your "yes" before it goes out. Connect Claude's Gmail and Google Calendar connectors so messages go out from your own accounts, and run `/pipeline init` first in a project folder.
+
+| Skill | What it does | Source | Needs |
+|---|---|---|---|
+| ★ `contract-writer` | Turns what was agreed on the call into a plain-English services agreement and PDF, and sends it only after your yes. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `follow-up` | Keeps following up until a call is booked, then stops: drafts each follow-up, waits for your yes, stops at the first "no". | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `forecaster` | Tells you what you'll close this month: commit, likely and best case, deal by deal. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `pipeline` | The deal board (CRM) the other ten Closer skills share: contacts, deals, stages, every email and call, next steps. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `proposal-writer` | Turns the call into a priced proposal the same day, with two or three clearly priced options. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `prospector` | Finds local businesses from public listings, checks each one's website for the gap you fix, and drafts cold emails that wait for your yes. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `record-keeper` | Logs every email and call to the board from your inbox and call notes, so you never update a CRM by hand. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `researcher` | Reads a prospect's public website before the call and writes a one-page brief. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `sales-coach` | Reads your sales call's live captions and suggests what to say when an objection comes up, plus a post-call review. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together; Claude in Chrome for live calls |
+| ★ `scheduler` | Turns "Thursday at 2 works" into a calendar invite with a Meet link, checking for clashes first. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
+| ★ `win-back` | Brings back deals that went quiet, with one well-timed try per deal. | [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) | Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together |
 
 ## SEO (`seo`, 43)
 

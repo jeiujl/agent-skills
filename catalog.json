@@ -1694,6 +1694,20 @@
   "core": false
  },
  {
+  "name": "contract-writer",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "contract-writer",
+  "original": "contract-writer",
+  "desc": "Turns what was agreed on the call into a plain-English services agreement and PDF, and sends it only after your yes.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "conversion-tracking",
   "kind": "library",
   "category": "marketing",
@@ -2406,6 +2420,34 @@
   "needs": "",
   "scripts": false,
   "core": false
+ },
+ {
+  "name": "follow-up",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "follow-up",
+  "original": "follow-up",
+  "desc": "Keeps following up until a call is booked, then stops: drafts each follow-up, waits for your yes, stops at the first \"no\".",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
+ },
+ {
+  "name": "forecaster",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "forecaster",
+  "original": "forecaster",
+  "desc": "Tells you what you'll close this month: commit, likely and best case, deal by deal.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
  },
  {
   "name": "free-tools",
@@ -4270,6 +4312,20 @@
   "core": false
  },
  {
+  "name": "pipeline",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "pipeline",
+  "original": "pipeline",
+  "desc": "The deal board (CRM) the other ten Closer skills share: contacts, deals, stages, every email and call, next steps.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "planning-and-task-breakdown",
   "kind": "library",
   "category": "workflow",
@@ -4718,6 +4774,20 @@
   "core": false
  },
  {
+  "name": "proposal-writer",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "proposal-writer",
+  "original": "proposal-writer",
+  "desc": "Turns the call into a priced proposal the same day, with two or three clearly priced options.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "prospecting",
   "kind": "library",
   "category": "marketing",
@@ -4730,6 +4800,20 @@
   "needs": "",
   "scripts": false,
   "core": false
+ },
+ {
+  "name": "prospector",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "prospector",
+  "original": "prospector",
+  "desc": "Finds local businesses from public listings, checks each one's website for the gap you fix, and drafts cold emails that wait for your yes.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
  },
  {
   "name": "prototype",
@@ -4856,6 +4940,20 @@
   "needs": "",
   "scripts": false,
   "core": false
+ },
+ {
+  "name": "record-keeper",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "record-keeper",
+  "original": "record-keeper",
+  "desc": "Logs every email and call to the board from your inbox and call notes, so you never update a CRM by hand.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
  },
  {
   "name": "reddit-automation",
@@ -5138,6 +5236,20 @@
   "core": false
  },
  {
+  "name": "researcher",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "researcher",
+  "original": "researcher",
+  "desc": "Reads a prospect's public website before the call and writes a one-page brief.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "retro",
   "kind": "library",
   "category": "workflow",
@@ -5222,6 +5334,20 @@
   "core": false
  },
  {
+  "name": "sales-coach",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "sales-coach",
+  "original": "sales-coach",
+  "desc": "Reads your sales call's live captions and suggests what to say when an objection comes up, plus a post-call review.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together; Claude in Chrome for live calls",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "sales-enablement",
   "kind": "library",
   "category": "marketing",
@@ -5262,6 +5388,20 @@
   "needs": "",
   "scripts": false,
   "core": false
+ },
+ {
+  "name": "scheduler",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "scheduler",
+  "original": "scheduler",
+  "desc": "Turns \"Thursday at 2 works\" into a calendar invite with a Meet link, checking for clashes first.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
  },
  {
   "name": "schema",
@@ -7068,6 +7208,20 @@
   "needs": "",
   "scripts": true,
   "core": false
+ },
+ {
+  "name": "win-back",
+  "kind": "library",
+  "category": "sales",
+  "source": "Jakeschincariol/closer-skill",
+  "license": "MIT",
+  "commit": "0b0107690e202010710a59eb7d0b47d331255e59",
+  "path": "win-back",
+  "original": "win-back",
+  "desc": "Brings back deals that went quiet, with one well-timed try per deal.",
+  "needs": "Python 3.8+; Gmail + Google Calendar connectors recommended; install all 11 together",
+  "scripts": true,
+  "core": true
  },
  {
   "name": "wizard",

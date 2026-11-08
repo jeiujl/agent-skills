@@ -1,9 +1,9 @@
 # Agent skills
 
-A library of **515 agent skills** and **283 agents** for **Claude Code** and **Codex**. The skills come from 43 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents): specialist personas from frontend developer to brand strategist.
+A library of **526 agent skills** and **283 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents): specialist personas from frontend developer to brand strategist.
 
-- **488** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
-- **47** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
+- **499** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
+- **58** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
 - **283 agents** in `agents/`, all installed by default (see [Agents](#agents-the-agency)).
 - **REA (Reverse Engineer Anything)**: its skill is in the core set, and `-SetupRea` connects the REA tool itself (see [REA](#rea-reverse-engineer-anything)).
 - Everything was checked before being added. See [`docs/security-review.md`](docs/security-review.md).
@@ -49,11 +49,11 @@ Use a skill name, a category, or a profile. Commas separate several.
 | Remove everything it installed | `.\install.ps1 -Reset` | `./install.sh --reset` |
 | Skip the agents | `.\install.ps1 -NoAgents` | `./install.sh --no-agents` |
 
-**Categories:** `design` `motion` `html` `frontend` `backend` `tokens` `workflow` `testing` `security` `marketing` `seo` `ads` `research` `learning` `automation` `writing` `agents`
+**Categories:** `design` `motion` `html` `frontend` `backend` `tokens` `workflow` `testing` `security` `marketing` `sales` `seo` `ads` `research` `learning` `automation` `writing` `agents`
 
 The installer only ever replaces or removes skills *it* installed (it keeps a list in each skills folder), so your own skills are safe. If you already have a skill with the same name, it's skipped.
 
-## Why only 47 skills are active
+## Why only 58 skills are active
 
 Every installed skill's name and description is loaded into every session, so 500 active skills would cost thousands of tokens each time. They'd also make it harder for Claude to pick the right one. Keep the active set to what you use, and add a category when a project needs it, such as `seo` for an SEO job.
 
@@ -67,6 +67,7 @@ Every installed skill's name and description is loaded into every session, so 50
 - **Marketing:** `marketing-psychology`, `copywriting`, `cro`, `seo-audit`, `ai-seo`, `pricing`
 - **Automation & security:** `n8n-workflow-patterns`, `agent-browser`, `security-review`, `reverse-engineer-anything` (REA)
 - **Learning & writing:** `learn`, `study-guide-builder`, `humanizer`, `false-flag-humanizer`
+- **Sales (Closer):** `prospector`, `researcher`, `follow-up`, `scheduler`, `sales-coach`, `proposal-writer`, `contract-writer`, `pipeline`, `record-keeper`, `win-back`, `forecaster`. Install or remove these 11 together (`-Add sales` / `-Remove sales`): they share one CRM, and the others need `pipeline` next to them.
 
 Edit `profiles/core.txt` to change it. Some skills need an extra tool or API key; see the **Needs** column in the catalog (e.g. `graphify` needs `pip install graphifyy`).
 

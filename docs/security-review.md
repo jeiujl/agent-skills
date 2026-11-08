@@ -12,6 +12,8 @@ How the skills in `library/` were checked before being added, and what to know a
 
 The 283 agents in `agents/` (The Agency) were scanned with the same checks. They are Markdown instructions with no scripts or binaries; no names clash. The 21 flagged lines were all false positives: security agents describing attacks they defend against (exfiltration, persistence checks during incident response, detection rules for `Invoke-Expression`), a prompt-engineering agent that tests "ignore previous instructions" attacks, and CI examples using a keychain profile. 17 agents declare a `tools:` list (Read, Write, Edit, WebFetch, WebSearch, and for 7 of them Bash), which limits what those agents may use in Claude Code. The Codex `.toml` files are generated from the same text by `maintenance/build_agents.py`.
 
+The 11 Closer sales skills (`sales` category, from Jakeschincariol/closer-skill at commit `0b01076`) were scanned with the same checks (no flags) and every SKILL.md and script was read in full. The scripts use only the Python standard library and write only inside a `closer/` folder in your project (the pipeline file, leads, briefs, proposals, contracts, call notes, calendar `.ics` files), with file names built from cleaned-up contact names. Two of them read the internet: `prospector` fetches one public page per prospect website and `researcher` up to four, each with a 15-second timeout and a user agent that names the project; neither sends anything else. `contract-writer` runs your own Chrome in headless mode to print the contract to PDF. No script sends email: the instructions draft every email, invite and contract and send it through Claude's Gmail and Calendar connectors only after your explicit "yes" for that one message (never "yes to all"), and a scheduled run never sends. `sales-coach` reads live call captions as text and tells you to let everyone on the call know first, since some places require everyone's consent. Their bundled unit tests were not run here.
+
 The four skills added by hand later (`learn`, `humanizer`, `study-guide-builder`, `false-flag-humanizer`) were checked by reading every file in full. Their two scripts use only the Python standard library, make no network calls, and only read the input file and write the output files you name.
 
 ## Skills that include scripts
@@ -29,6 +31,7 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `caveman-learn` | 2 | none |  |
 | `claude-api` | 4 | api.anthropic.com |  |
 | `codeql` | 15 | none |  |
+| `contract-writer` | 2 | none (runs your local Chrome to make the PDF) | Python 3.8+ |
 | `conversion-tracking` | 28 | none |  |
 | `design-taste-frontend` | 12 | archive.org, www.artic.edu, collectionapi.metmuseum.org, api.openverse.org, api.artic.edu, images-api.nasa.gov |  |
 | `devcontainer-setup` | 2 | none |  |
@@ -36,6 +39,8 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `diagram-design` | 6 | none |  |
 | `diagramming-code` | 2 | none |  |
 | `false-flag-humanizer` | 1 | none | Python 3 |
+| `follow-up` | 2 | none | Python 3.8+ |
+| `forecaster` | 2 | none | Python 3.8+ |
 | `frontend-design-direction` | 1 | none |  |
 | `frontend-slides` | 4 | none |  |
 | `git-guardrails-claude-code` | 1 | none |  |
@@ -47,10 +52,17 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `mcp-builder` | 2 | none |  |
 | `n8n-self-hosting` | 1 | none |  |
 | `open-sourcing` | 2 | none |  |
+| `pipeline` | 3 | none | Python 3.8+ |
 | `planning-with-files` | 22 | none |  |
+| `proposal-writer` | 2 | none | Python 3.8+ |
+| `prospector` | 2 | prospects' public websites (one page per site) | Python 3.8+ |
+| `record-keeper` | 2 | none | Python 3.8+ |
 | `remotion` | 1 | storage.googleapis.com |  |
+| `researcher` | 2 | prospects' public websites (up to 4 pages per site) | Python 3.8+ |
 | `review-walkthrough` | 1 | none |  |
+| `sales-coach` | 2 | none | Python 3.8+ |
 | `sarif-parsing` | 2 | none |  |
+| `scheduler` | 2 | none | Python 3.8+ |
 | `security-audit` | 4 | none |  |
 | `semgrep` | 3 | none |  |
 | `setup-ts-deep-modules` | 1 | none |  |
@@ -73,6 +85,7 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `uupm-ui-styling` | 4 | none |  |
 | `web-artifacts-builder` | 2 | none |  |
 | `webapp-testing` | 4 | none |  |
+| `win-back` | 2 | none | Python 3.8+ |
 | `wizard` | 1 | none |  |
 | `writing-skills` | 1 | none |  |
 

@@ -101,6 +101,12 @@ Use one of these *instead of* the copies in `library/` if you'd like automatic u
 npx impeccable install      # in a terminal, not inside Claude Code
 ```
 
+The 11 Closer sales skills (`sales` category) also come as a plugin. If you use it, remove this repo's copies first (`./install.sh --remove sales`), because the plugin's skills are named `/closer-skill:prospector` and so on, and Claude would see both:
+```
+/plugin marketplace add Jakeschincariol/closer-skill
+/plugin install closer-skill@closer-skill
+```
+
 ## The `skills` command
 [skills.sh](https://skills.sh) has a command that installs single skills from GitHub into Claude Code, Codex and other agents. For example, the one you mentioned:
 ```

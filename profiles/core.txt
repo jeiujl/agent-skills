@@ -7,6 +7,7 @@ brainstorming
 caveman
 chief-of-staff
 context-budget
+contract-writer
 copywriting
 cro
 deep-research
@@ -15,6 +16,8 @@ emil-design-eng
 executing-plans
 false-flag-humanizer
 find-skills
+follow-up
+forecaster
 frontend-design
 graphify
 grill-me
@@ -29,11 +32,18 @@ learn
 make-interfaces-feel-better
 marketing-psychology
 n8n-workflow-patterns
+pipeline
 planning-with-files
 ponytail
 pricing
+proposal-writer
+prospector
+record-keeper
 requesting-code-review
+researcher
 reverse-engineer-anything
+sales-coach
+scheduler
 security-review
 seo-audit
 skill-creator
@@ -45,4 +55,5 @@ token-budget-advisor
 ui-ux-pro-max
 verification-before-completion
 web-design-guidelines
+win-back
 writing-plans
