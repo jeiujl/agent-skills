@@ -1,0 +1,26 @@
+# Core agents: installed by default (the other agents stay in agents/ and the
+# library-router skill reads them when a task needs one). One agent id per line
+# (see agents/index.tsv or ./install.sh --list-agents); edit freely.
+design-ui-designer
+design-ux-architect
+engineering-ai-engineer
+engineering-backend-architect
+engineering-code-reviewer
+engineering-frontend-developer
+engineering-multi-agent-systems-architect
+engineering-rapid-prototyper
+marketing-content-creator
+marketing-growth-hacker
+marketing-seo-specialist
+marketing-social-media-strategist
+paid-media-paid-social-strategist
+paid-media-ppc-strategist
+paid-media-tracking-specialist
+product-manager
+project-manager-senior
+sales-discovery-coach
+sales-offer-lead-gen-strategist
+sales-outbound-strategist
+sales-proposal-strategist
+testing-accessibility-auditor
+testing-reality-checker

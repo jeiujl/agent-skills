@@ -3682,6 +3682,20 @@
   "core": true
  },
  {
+  "name": "library-router",
+  "kind": "library",
+  "category": "agents",
+  "source": "jeiujl (written for this library)",
+  "license": "",
+  "commit": "",
+  "path": "library/library-router",
+  "original": "library-router",
+  "desc": "Finds the best skill or agent in this library for a task and reads only the 1-3 that fit, so the rest of the library costs nothing until it's needed.",
+  "needs": "This repo cloned on the same computer (the installer fills in its location)",
+  "scripts": false,
+  "core": true
+ },
+ {
   "name": "link-building",
   "kind": "library",
   "category": "seo",

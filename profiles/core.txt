@@ -29,6 +29,7 @@ improve-animations
 karpathy-guidelines
 last30days
 learn
+library-router
 make-interfaces-feel-better
 marketing-psychology
 n8n-workflow-patterns

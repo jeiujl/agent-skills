@@ -1,22 +1,25 @@
 <#
 .SYNOPSIS
-  Install skills from this library, and The Agency's agents, into Claude Code and Codex.
+  Install skills and agents from this library into Claude Code and Codex.
 
 .DESCRIPTION
   With no options, installs the core skills into Claude Code (%USERPROFILE%\.claude\skills)
-  and Codex (%USERPROFILE%\.agents\skills), and all of The Agency's agents into
-  %USERPROFILE%\.claude\agents and %USERPROFILE%\.codex\agents.
+  and Codex (%USERPROFILE%\.agents\skills), and the core agents into
+  %USERPROFILE%\.claude\agents and %USERPROFILE%\.codex\agents. Everything else stays in
+  this folder, and the library-router skill reads the best skill or agent from it when a
+  task needs one.
 
   Only skills and agents this script installed are ever replaced or removed: it keeps a
   list of them in each folder (.agent-skills-managed), so your own are left alone.
 
 .EXAMPLE
-  .\install.ps1                        # core skills + all agents into Claude Code and Codex
+  .\install.ps1                        # core skills + core agents into Claude Code and Codex
   .\install.ps1 -Profile all           # every skill (+ all agents)
   .\install.ps1 -Add motion,seo        # add categories or skill names
   .\install.ps1 -Remove gsap-timeline  # remove skills this script installed
   .\install.ps1 -List design           # list skills (* = core)
-  .\install.ps1 -Agents engineering,design   # install agents by division or name
+  .\install.ps1 -Agents engineering,design   # add agents by division or name
+  .\install.ps1 -Agents all            # every agent (core and all also remove other agents it installed)
   .\install.ps1 -NoAgents              # core skills only, no agents
   .\install.ps1 -RemoveAgents all      # remove the agents this script installed (or name divisions)
   .\install.ps1 -ListAgents marketing  # list agents in a division
@@ -31,7 +34,7 @@
                     security marketing sales seo ads research learning automation writing agents
   Agent divisions:  academic design engineering finance game-development gis healthcare
                     marketing paid-media product project-management research sales
-                    security spatial-computing specialized support testing
+                    security spatial-computing specialized support testing ads
 #>
 [CmdletBinding()]
 param(
@@ -58,6 +61,7 @@ $Index = Import-Csv -Path (Join-Path $Root 'index.tsv') -Delimiter "`t"
 $ByName = @{}; foreach ($row in $Index) { $ByName[$row.name] = $row }
 $Core = Get-Content (Join-Path $Root 'profiles/core.txt') | Where-Object { $_ -and -not $_.StartsWith('#') }
 $AgentIndex = Import-Csv -Path (Join-Path $Root 'agents/index.tsv') -Delimiter "`t" -Encoding UTF8
+$AgentCore = Get-Content (Join-Path $Root 'profiles/agents-core.txt') | Where-Object { $_ -and -not $_.StartsWith('#') }
 $Manifest = '.agent-skills-managed'
 # REA (Reverse Engineer Anything) version that -SetupRea runs; it matches
 # library/reverse-engineer-anything. Official package: npm rea-agents (github.com/morluto/rea).
@@ -88,9 +92,9 @@ if ($List) {
 
 if ($ListAgents) {
   $shown = @($AgentIndex | Where-Object { -not $Category -or $_.division -eq $Category })
-  $shown | ForEach-Object { '{0,-48} {1,-20} {2}' -f $_.id, $_.division, $_.name }
+  $shown | ForEach-Object { '{0} {1,-48} {2,-20} {3}' -f $(if ($AgentCore -contains $_.id) { '*' } else { ' ' }), $_.id, $_.division, $_.name }
   ''
-  "$($shown.Count) agents"
+  "$($shown.Count) agents (* = core)"
   return
 }
 
@@ -121,7 +125,8 @@ function Expand-Agents([string[]]$tokens) {
   $out = [System.Collections.Generic.List[object]]::new()
   $seen = @{}
   foreach ($token in $tokens) {
-    $rows = @($AgentIndex | Where-Object { $token -eq 'all' -or $_.id -eq $token -or $_.division -eq $token -or $_.codex -eq $token })
+    $rows = if ($token -eq 'core') { @($AgentIndex | Where-Object { $AgentCore -contains $_.id }) }
+            else { @($AgentIndex | Where-Object { $token -eq 'all' -or $_.id -eq $token -or $_.division -eq $token -or $_.codex -eq $token }) }
     if (-not $rows.Count) { Write-Warning "No agent or division called '$token' (see .\install.ps1 -ListAgents)" }
     foreach ($r in $rows) { if (-not $seen.ContainsKey($r.id)) { $seen[$r.id] = 1; $out.Add($r) } }
   }
@@ -174,7 +179,8 @@ $agentDrop = @(Split-Names $RemoveAgents)
 $defaultRun = -not $Reset -and -not $dropTokens.Count -and -not $wantTokens.Count -and -not $agentWant.Count -and -not $agentDrop.Count
 if ($defaultRun) { $wantTokens = @('core') }
 if ($NoAgents) { $agentWant = @() }
-elseif (-not $agentWant.Count -and ($defaultRun -or $Preset)) { $agentWant = @('all') }
+elseif (-not $agentWant.Count -and $Preset -eq 'all') { $agentWant = @('all') }
+elseif (-not $agentWant.Count -and ($defaultRun -or $Preset)) { $agentWant = @('core') }
 
 if ($DryRun) { Write-Host 'Dry run: nothing will be changed.' }
 $skillDirs = if ($Reset -or $dropTokens.Count -or $wantTokens.Count) { $Dirs } else { @() }
@@ -216,6 +222,12 @@ foreach ($dir in $skillDirs) {
         if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') { Move-Item -Force $winSkill (Join-Path $dest 'SKILL.md') }
         else { Remove-Item -Force $winSkill }
       }
+      # Skills that need to know where this library is (library-router)
+      $skillFile = Join-Path $dest 'SKILL.md'
+      $skillText = [System.IO.File]::ReadAllText($skillFile)
+      if ($skillText.Contains('{{AGENT_SKILLS_ROOT}}')) {
+        [System.IO.File]::WriteAllText($skillFile, $skillText.Replace('{{AGENT_SKILLS_ROOT}}', $Root), (New-Object System.Text.UTF8Encoding $false))
+      }
       if (-not $managed.Contains($name)) { $managed.Add($name) }
       Write-Host "  + $name"
     }
@@ -255,8 +267,8 @@ if ($Reset -or $agentWant.Count -or $agentDrop.Count) {
         Copy-Item -Force -Path (Get-AgentSource $dir $row) -Destination $dest
         if (-not $managed.Contains($file)) { $managed.Add($file) }
       }
-      # After a full install, drop agents this script installed that are no longer in the library
-      if ($agentWant -contains 'all') {
+      # core and all are whole sets: drop agents this script installed that are not in them
+      if ($agentWant -contains 'all' -or $agentWant -contains 'core') {
         $current = @{}; foreach ($row in $wanted) { $current[(Get-AgentFile $dir $row)] = 1 }
         foreach ($file in @($managed.ToArray())) {
           if ($current.ContainsKey($file)) { continue }
@@ -267,7 +279,7 @@ if ($Reset -or $agentWant.Count -or $agentDrop.Count) {
     }
     if ($added -or $updated -or $removed) { Write-Host "  agents: +$added new, $updated refreshed, -$removed removed" }
     if (-not $DryRun -and (Test-Path $dir)) { Set-Managed $dir $managed.ToArray() }
-    Write-Host "  $($managed.Count) agents from The Agency installed here"
+    Write-Host "  $($managed.Count) agents installed here"
   }
 }
 

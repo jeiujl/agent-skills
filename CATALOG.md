@@ -1,6 +1,6 @@
 # Catalog
 
-499 skills in `library/`, plus 27 installed from their source repo. **58** are in the core set (★), installed by default. The 283 agents from The Agency are listed [at the end](#agents-the-agency).
+500 skills in `library/`, plus 27 installed from their source repo. **59** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -604,10 +604,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | `writing-skills` | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |  |
 | `xlsx` | Use this skill any time a spreadsheet file is the primary input or output. | [anthropics/skills](https://github.com/anthropics/skills) · from source | git (installed from source) |
 
-## Skills, agents & Claude tooling (`agents`, 13)
+## Skills, agents & Claude tooling (`agents`, 14)
 
 | Skill | What it does | Source | Needs |
 |---|---|---|---|
+| ★ `library-router` | Finds the best skill or agent in this library for a task and reads only the 1-3 that fit, so the rest of the library costs nothing until it's needed. | jeiujl (written for this library) | This repo cloned on the same computer (the installer fills in its location) |
 | ★ `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending c | [vercel-labs/skills](https://github.com/vercel-labs/skills) |  |
 | ★ `skill-creator` | Create new skills, modify and improve existing skills, and measure skill performance. | [anthropics/skills](https://github.com/anthropics/skills) |  |
 | `academy-guide` | Stop and check this skill before finishing any reply to a question about how to use Claude or a Claude product — it recommends matching courses, tutorials, and use cases from Claud | [anthropics/skills](https://github.com/anthropics/skills) |  |
@@ -622,9 +623,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | `using-agent-skills` | Discovers and invokes agent skills. | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) |  |
 | `wizard` | Generate an interactive bash wizard that walks a human through steps only they can perform. | [mattpocock/skills](https://github.com/mattpocock/skills) |  |
 
-## Agents (The Agency)
+## Agents
 
-283 agents from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT), all installed by default. Install a division with `./install.sh --agents engineering` (Windows: `.\install.ps1 -Agents engineering`); the file column is the name to use for a single agent.
+306 agents in 19 divisions: 283 from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT) and 23 ads workers from [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) (MIT). All of them stay in the repo, but only the **23 core agents** (★, `profiles/agents-core.txt`) are installed by default. The `library-router` skill picks any of the others when a task needs one, so they cost nothing until then.
+
+Install more with `./install.sh --agents ads,engineering` (Windows: `.\install.ps1 -Agents ads,engineering`), or everything with `--agents all` / `-Agents all`. The file column is the name to use for a single agent.
 
 ### Academic (`academic`, 6)
 
@@ -637,17 +640,47 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | Psychologist | Expert in human behavior, personality theory, motivation, and cognitive patterns — builds psychologically credible characters and interactions grounded in clinical and research… | `academic-psychologist` |
 | Statistician | Expert in quantitative research methodology, experimental design, and statistical inference — pressure-tests claims, designs sound studies, and separates real signal from noise,… | `academic-statistician` |
 
+### Ads (claude-ads workers) (`ads`, 23)
+
+Workers for the `claude-ads-ads` conductor skill (read `library/claude-ads-ads/SKILL.md` first; it decides which workers to run). From [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) (MIT).
+
+| Agent | What it does | File |
+|---|---|---|
+| audit-amazon | Amazon Ads evidence and controls specialist. Returns schema-valid findings for profiles and regions, portfolios, Sponsored Products, Brands, Display, DSP, search-term harvesting… | `audit-amazon` |
+| audit-apple | Apple Ads evidence and controls specialist. Returns schema-valid findings for campaign and keyword structure, Search Match, placements, product pages, bidding, budget, AdService… | `audit-apple` |
+| audit-budget | Budget and finance specialist. Returns schema-valid findings covering budget sufficiency, pacing, bids, marginal return, MER, CPA, ROAS, LTV:CAC, experiments, and allocation tra… | `audit-budget` |
+| audit-creative | Cross-platform creative specialist. Returns schema-valid findings covering creative fit, concept diversity, fatigue, format coverage, message match, and evidence-backed refresh… | `audit-creative` |
+| audit-google | Google Ads evidence and controls specialist. Returns schema-valid findings for conversion tracking, search terms, campaign structure, bidding, PMax, Demand Gen, assets, settings… | `audit-google` |
+| audit-linkedin | LinkedIn Ads evidence and controls specialist. Returns schema-valid findings for Insight Tag and conversions, professional audiences, lead generation, creative, bidding, pacing,… | `audit-linkedin` |
+| audit-meta | Meta Ads evidence and controls specialist. Returns schema-valid findings for Pixel and CAPI, attribution, creative diversity and fatigue, account structure, audiences, placement… | `audit-meta` |
+| audit-microsoft | Microsoft Advertising evidence and controls specialist. Returns schema-valid findings for UET and conversions, syndication, imports, search and audience campaigns, bidding, asse… | `audit-microsoft` |
+| audit-pinterest | Pinterest Ads evidence and controls specialist. Returns schema-valid findings for Pinterest Tag and CAPI, catalog and shopping readiness, visual creative, audiences, bidding, br… | `audit-pinterest` |
+| audit-policy-compliance | Platform policy specialist. Returns schema-valid findings covering platform eligibility, regulated categories, creative and targeting policy, deprecations, brand safety, and acc… | `audit-policy-compliance` |
+| audit-reddit | Reddit Ads evidence and controls specialist. Returns schema-valid findings for Pixel and CAPI, community and interest targeting, placements, conversation and catalog ads, creati… | `audit-reddit` |
+| audit-regulatory-compliance | Regulatory and privacy specialist. Returns schema-valid findings covering applicable privacy, disclosure, consent, data-processing, consumer-protection, AI-advertising, and acco… | `audit-regulatory-compliance` |
+| audit-snapchat | Snapchat Ads evidence and controls specialist. Returns schema-valid findings for Snap Pixel and CAPI, mobile-first creative, AR and catalog formats, audiences, bidding, app meas… | `audit-snapchat` |
+| audit-tiktok | TikTok Ads evidence and controls specialist. Returns schema-valid findings for Pixel and Events API, creative-native fit, Smart+, Shop, bidding, pacing, audiences, measurement,… | `audit-tiktok` |
+| audit-tracking | Tracking and attribution specialist. Returns schema-valid findings covering conversion taxonomy, tags and pixels, server-side events, deduplication, consent, MMPs, attribution w… | `audit-tracking` |
+| audit-x | X Ads evidence and controls specialist. Returns schema-valid findings for website and app measurement, objectives, keyword and conversation targeting, creative, bidding, placeme… | `audit-x` |
+| audit-youtube | YouTube Ads evidence and controls specialist. Returns schema-valid findings for video campaign setup, hooks and formats, Demand Gen, Shorts, CTV, audiences, frequency, measureme… | `audit-youtube` |
+| copy-writer | Bounded paid-media copy worker. Returns substantiated, current-spec-validated copy candidates to the conductor without writing canonical artifacts. | `copy-writer` |
+| creative-strategist | Bounded paid-media concept worker. Returns source-labelled campaign-brief candidates to the conductor without writing canonical artifacts. | `creative-strategist` |
+| format-adapter | Bounded creative-format verification worker. Inspects run-scoped candidates against current official specifications and returns typed results. | `format-adapter` |
+| research-worker | Paid-media research worker for one bounded platform, policy, API, issue, pull-request, or repository slice. Produces source and license evidence without editing canonical guidance. | `research-worker` |
+| source-verifier | Adversarial source and claim verifier for paid-media facts, thresholds, policies, APIs, benchmarks, and repository evidence. Classifies confidence without repairing claims. | `source-verifier` |
+| visual-designer | Bounded provider-neutral visual candidate worker. Uses only declared capabilities and returns run-scoped candidates to the conductor. | `visual-designer` |
+
 ### Design (`design`, 10)
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ UI Designer | Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces th… | `design-ui-designer` |
+| ★ UX Architect | Technical architecture and UX specialist who provides developers with solid foundations, CSS systems, and clear implementation guidance | `design-ux-architect` |
 | Brand Guardian | Expert brand strategist and guardian specializing in brand identity development, consistency maintenance, and strategic brand positioning | `design-brand-guardian` |
 | Image Prompt Engineer | Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts into precise lang… | `design-image-prompt-engineer` |
 | Inclusive Visuals Specialist | Representation expert who defeats systemic AI biases to generate culturally accurate, affirming, and non-stereotypical images and video. | `design-inclusive-visuals-specialist` |
 | Persona Walkthrough Specialist | Simulate cognitive walkthroughs of web pages from a defined persona's psychological perspective — captures emotional reactions and rational thought at each scroll position, then… | `design-persona-walkthrough` |
-| UI Designer | Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces th… | `design-ui-designer` |
 | UI Finish-Gate Reviewer | Product-interface reviewer who catches generic, interchangeable UI before it ships by grounding critique in real product evidence, a written design contract, and a hard implemen… | `design-ui-finish-gate-reviewer` |
-| UX Architect | Technical architecture and UX specialist who provides developers with solid foundations, CSS systems, and clear implementation guidance | `design-ux-architect` |
 | UX Researcher | Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findings that improve… | `design-ux-researcher` |
 | Visual Storyteller | Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes in transforming c… | `design-visual-storyteller` |
 | Whimsy Injector | Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differentiate brands th… | `design-whimsy-injector` |
@@ -656,15 +689,18 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ AI Engineer | Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pip… | `engineering-ai-engineer` |
+| ★ Backend Architect | Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side… | `engineering-backend-architect` |
+| ★ Code Reviewer | Expert code reviewer who provides constructive, actionable feedback focused on correctness, maintainability, security, and performance — not style preferences. | `engineering-code-reviewer` |
+| ★ Frontend Developer | Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization | `engineering-frontend-developer` |
+| ★ Multi-Agent Systems Architect | Systems architect specializing in the design, coordination, and governance of multi-agent AI pipelines — covering topology selection, context management, inter-agent trust, fail… | `engineering-multi-agent-systems-architect` |
+| ★ Rapid Prototyper | Specialized in ultra-fast proof-of-concept development and MVP creation using efficient tools and frameworks | `engineering-rapid-prototyper` |
 | AI Data Remediation Engineer | Specialist in self-healing data pipelines — uses air-gapped local SLMs and semantic clustering to automatically detect, classify, and fix data anomalies at scale. Focuses exclus… | `engineering-ai-data-remediation-engineer` |
-| AI Engineer | Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pip… | `engineering-ai-engineer` |
 | API Platform Engineer | Expert API platform engineer for public and partner APIs — contract-first design (OpenAPI/gRPC), versioning and deprecation policy, SDK generation, API gateway concerns (auth, r… | `engineering-api-platform-engineer` |
 | ATS Validator Architect | Architect and validator for Applicant Tracking Systems (ATS) and resume parsers. Combines deterministic information retrieval (BM25/TF-IDF and n-grams without AI), quantified Go… | `engineering-ats-validator-architect` |
 | Autonomous Optimization Architect | Intelligent system governor that continuously shadow-tests APIs for performance while enforcing strict financial and security guardrails against runaway costs. | `engineering-autonomous-optimization-architect` |
-| Backend Architect | Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side… | `engineering-backend-architect` |
 | China Network Engineer | Expert in mainland China's mainstream enterprise networking stacks — Huawei VRP, H3C Comware, Ruijie RGOS, and Hillstone StoneOS — covering routing, switching, firewalling, NAT,… | `engineering-china-network-engineer` |
 | CMS Developer | Drupal and WordPress specialist for theme development, custom plugins/modules, content architecture, and code-first CMS implementation | `engineering-cms-developer` |
-| Code Reviewer | Expert code reviewer who provides constructive, actionable feedback focused on correctness, maintainability, security, and performance — not style preferences. | `engineering-code-reviewer` |
 | Codebase Onboarding Engineer | Expert developer onboarding specialist who helps new engineers understand unfamiliar codebases fast by reading source code, tracing code paths, and stating only facts grounded i… | `engineering-codebase-onboarding-engineer` |
 | Data Engineer | Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark, dbt, streaming s… | `engineering-data-engineer` |
 | Data Visualization Engineer | Expert data visualization engineer — chart-type selection by data and question, perceptually honest encodings, colorblind-safe data palettes, accessible and interactive charts,… | `engineering-data-visualization-engineer` |
@@ -681,7 +717,6 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | Feishu Integration Developer | Full-stack integration expert specializing in the Feishu (Lark) Open Platform — proficient in Feishu bots, mini programs, approval workflows, Bitable (multidimensional spreadshe… | `engineering-feishu-integration-developer` |
 | Filament Optimization Specialist | Expert in restructuring and optimizing Filament PHP admin interfaces for maximum usability and efficiency. Focuses on impactful structural changes — not just cosmetic tweaks. | `engineering-filament-optimization-specialist` |
 | FinOps Engineer | Expert cloud cost engineer for AWS/GCP/Azure — cost allocation and tagging, rightsizing, commitment planning (reserved instances/savings plans), egress and storage optimization,… | `engineering-finops-engineer` |
-| Frontend Developer | Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization | `engineering-frontend-developer` |
 | GaussDB Expert Engineer | Expert database specialist focusing on GaussDB OLTP — Huawei's self-developed enterprise-grade relational database (NOT GaussDB(DWS) OLAP, NOT GaussDB(for openGauss) cloud servi… | `engineering-gaussdb-expert` |
 | Git Workflow Master | Expert in Git workflows, branching strategies, and version control best practices including conventional commits, rebasing, worktrees, and CI-friendly branch management. | `engineering-git-workflow-master` |
 | Identity & Access Engineer | Expert identity engineer for OAuth 2.0/OIDC flows, enterprise SSO (SAML/OIDC) and SCIM provisioning, passkeys/WebAuthn, session architecture, and multi-tenant authorization with… | `engineering-identity-access-engineer` |
@@ -694,7 +729,6 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | Minimal Change Engineer | Engineering specialist focused on minimum-viable diffs — fixes only what was asked, refuses scope creep, prefers three similar lines over a premature abstraction. The discipline… | `engineering-minimal-change-engineer` |
 | Mobile App Builder | Specialized mobile application developer with expertise in native iOS/Android development and cross-platform frameworks | `engineering-mobile-app-builder` |
 | Mobile Release Engineer | Expert mobile release and distribution engineer for iOS and Android — code signing, provisioning, fastlane pipelines, App Store Connect and Play Console submission, phased rollo… | `engineering-mobile-release-engineer` |
-| Multi-Agent Systems Architect | Systems architect specializing in the design, coordination, and governance of multi-agent AI pipelines — covering topology selection, context management, inter-agent trust, fail… | `engineering-multi-agent-systems-architect` |
 | Network Engineer | Expert network engineer for Cisco IOS/IOS-XE, Cisco ASA/FTD, Juniper Junos, and Palo Alto PAN-OS routing, switching, firewalling, and troubleshooting. | `engineering-network-engineer` |
 | OrgScript Engineer | Expert in designing, parsing, and implementing OrgScript grammar, AST validation, and business logic definitions. | `engineering-orgscript-engineer` |
 | Payments & Billing Engineer | Expert payments engineer for PSP integrations (Stripe, Adyen, Braintree, PayPal), idempotent payment flows, webhook processing, subscription billing, SCA/3DS, PCI scope reductio… | `engineering-payments-billing-engineer` |
@@ -703,7 +737,6 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | Privacy Engineer | Expert privacy engineer who implements privacy in code — PII discovery and classification, data minimization, consent enforcement at the API layer, automated DSAR and deletion a… | `engineering-privacy-engineer` |
 | Prompt Engineer | Specialist in crafting, testing, and systematically optimizing prompts for LLMs — turning vague instructions into reliable, production-grade AI behaviors. | `engineering-prompt-engineer` |
 | RAG Pipeline Engineer | Production RAG specialist focused on chunking strategy, retrieval quality, hybrid search, re-ranking, and eval-driven iteration. Builds pipelines that actually retrieve the righ… | `engineering-rag-pipeline-engineer` |
-| Rapid Prototyper | Specialized in ultra-fast proof-of-concept development and MVP creation using efficient tools and frameworks | `engineering-rapid-prototyper` |
 | Realtime Collaboration Engineer | Expert realtime systems engineer for WebSocket/SSE infrastructure, presence, CRDT and OT-based collaborative editing, offline-first sync engines, and fan-out scaling with reconn… | `engineering-realtime-collaboration-engineer` |
 | Rust Refactoring Specialist | Expert Rust engineer for repository-scale refactoring, safe renames, module restructuring, duplication removal, panic hardening, ownership improvements, and compiler or Clippy r… | `engineering-rust-refactoring-specialist` |
 | Search Relevance Engineer | Expert search engineer for Elasticsearch and OpenSearch — index and analyzer design, BM25 query tuning, hybrid lexical+vector retrieval, and judgment-based relevance evaluation… | `engineering-search-relevance-engineer` |
@@ -789,6 +822,10 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ Content Creator | Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for… | `marketing-content-creator` |
+| ★ Growth Hacker | Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growt… | `marketing-growth-hacker` |
+| ★ SEO Specialist | Expert search engine optimization strategist specializing in technical SEO, content optimization, link authority building, and organic search growth. Drives sustainable traffic… | `marketing-seo-specialist` |
+| ★ Social Media Strategist | Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develop… | `marketing-social-media-strategist` |
 | AEO Foundations Architect | Expert in AI Engine Optimization infrastructure — implements llms.txt, AI-aware robots.txt, token-budgeted content, structured Markdown availability, and agent discovery files s… | `marketing-aeo-foundations` |
 | Agentic Search Optimizer | Expert in WebMCP readiness and agentic task completion — audits whether AI agents can actually accomplish tasks on your site (book, buy, register, subscribe), implements WebMCP… | `marketing-agentic-search-optimizer` |
 | AI Citation Strategist | Expert in AI recommendation engine optimization (AEO/GEO) — audits brand visibility across ChatGPT, Claude, Gemini, and Perplexity, identifies why competitors get cited instead,… | `marketing-ai-citation-strategist` |
@@ -799,13 +836,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | Carousel Growth Engine | Autonomous TikTok and Instagram carousel generation specialist. Analyzes any website URL with Playwright, generates viral 6-slide carousels via Gemini image generation, publishe… | `marketing-carousel-growth-engine` |
 | China E-Commerce Operator | Expert China e-commerce operations specialist covering Taobao, Tmall, Pinduoduo, and JD ecosystems with deep expertise in product listing optimization, live commerce, store oper… | `marketing-china-ecommerce-operator` |
 | China Market Localization Strategist | Full-stack China market localization expert who transforms real-time trend signals into executable go-to-market strategies across Douyin, Xiaohongshu, WeChat, Bilibili, and beyond | `marketing-china-market-localization-strategist` |
-| Content Creator | Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for… | `marketing-content-creator` |
 | Cross-Border E-Commerce Specialist | Full-funnel cross-border e-commerce strategist covering Amazon, Shopee, Lazada, AliExpress, Temu, and TikTok Shop operations, international logistics and overseas warehousing, c… | `marketing-cross-border-ecommerce` |
 | Developer Community Builder | Grows and sustains developer communities — Discord servers, GitHub discussions, forums, and contributor programs — turning users into advocates and advocates into contributors. | `marketing-developer-community-builder` |
 | Douyin Strategist | Short-video marketing expert specializing in the Douyin platform, with deep expertise in recommendation algorithm mechanics, viral video planning, livestream commerce workflows,… | `marketing-douyin-strategist` |
 | Email Marketing Strategist | Expert email marketing strategist for CRM-driven campaigns, lifecycle automation, segmentation architecture, and deliverability. Designs sequences (welcome, nurture, reactivatio… | `marketing-email-strategist` |
 | Global Podcast Strategist | Expert podcast growth specialist focused on show positioning, audience development, content strategy, and monetisation. Transforms raw ideas into authoritative audio brands that… | `marketing-global-podcast-strategist` |
-| Growth Hacker | Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growt… | `marketing-growth-hacker` |
 | Instagram Curator | Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development and drives meaning… | `marketing-instagram-curator` |
 | Kuaishou Strategist | Expert Kuaishou marketing strategist specializing in short-video content for China's lower-tier city markets, live commerce operations, community trust building, and grassroots… | `marketing-kuaishou-strategist` |
 | LinkedIn Content Creator | Expert LinkedIn content strategist focused on thought leadership, personal brand building, and high-engagement professional content. Masters LinkedIn's algorithm and culture to… | `marketing-linkedin-content-creator` |
@@ -815,9 +850,7 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | PR & Communications Manager | Strategic public relations and communications specialist for media relations, press releases, crisis communications, executive thought leadership, brand reputation management, a… | `marketing-pr-communications-manager` |
 | Private Domain Operator | Expert in building enterprise WeChat (WeCom) private domain ecosystems, with deep expertise in SCRM systems, segmented community operations, Mini Program commerce integration, u… | `marketing-private-domain-operator` |
 | Reddit Community Builder | Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit culture navigation. | `marketing-reddit-community-builder` |
-| SEO Specialist | Expert search engine optimization strategist specializing in technical SEO, content optimization, link authority building, and organic search growth. Drives sustainable traffic… | `marketing-seo-specialist` |
 | Short-Video Editing Coach | Hands-on short-video editing coach covering the full post-production pipeline, with mastery of CapCut Pro, Premiere Pro, DaVinci Resolve, and Final Cut Pro across composition an… | `marketing-short-video-editing-coach` |
-| Social Media Strategist | Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develop… | `marketing-social-media-strategist` |
 | TikTok Strategist | Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok's unique culture and features for brand growth. | `marketing-tiktok-strategist` |
 | Twitter Engager | Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through authentic conversat… | `marketing-twitter-engager` |
 | Video Optimization Specialist | Video marketing strategist specializing in YouTube algorithm optimization, audience retention, chaptering, thumbnail concepts, and cross-platform video syndication. | `marketing-video-optimization-specialist` |
@@ -831,22 +864,22 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ Paid Social Strategist | Cross-platform paid social advertising specialist covering Meta (Facebook/Instagram), LinkedIn, TikTok, Pinterest, X, and Snapchat. Designs full-funnel social ad programs from p… | `paid-media-paid-social-strategist` |
+| ★ PPC Campaign Strategist | Senior paid media strategist specializing in large-scale search, shopping, and performance max campaign architecture across Google, Microsoft, and Amazon ad platforms. Designs a… | `paid-media-ppc-strategist` |
+| ★ Tracking & Measurement Specialist | Expert in conversion tracking architecture, tag management, and attribution modeling across Google Tag Manager, GA4, Google Ads, Meta CAPI, LinkedIn Insight Tag, and server-side… | `paid-media-tracking-specialist` |
 | Ad Creative Strategist | Paid media creative specialist focused on ad copywriting, RSA optimization, asset group design, and creative testing frameworks across Google, Meta, Microsoft, and programmatic… | `paid-media-creative-strategist` |
 | Paid Media Auditor | Comprehensive paid media auditor who systematically evaluates Google Ads, Microsoft Ads, and Meta accounts across 200+ checkpoints spanning account structure, tracking, bidding,… | `paid-media-auditor` |
-| Paid Social Strategist | Cross-platform paid social advertising specialist covering Meta (Facebook/Instagram), LinkedIn, TikTok, Pinterest, X, and Snapchat. Designs full-funnel social ad programs from p… | `paid-media-paid-social-strategist` |
-| PPC Campaign Strategist | Senior paid media strategist specializing in large-scale search, shopping, and performance max campaign architecture across Google, Microsoft, and Amazon ad platforms. Designs a… | `paid-media-ppc-strategist` |
 | Programmatic & Display Buyer | Display advertising and programmatic media buying specialist covering managed placements, Google Display Network, DV360, trade desk platforms, partner media (newsletters, sponso… | `paid-media-programmatic-buyer` |
 | Search Query Analyst | Specialist in search term analysis, negative keyword architecture, and query-to-intent mapping. Turns raw search query data into actionable optimizations that eliminate waste an… | `paid-media-search-query-analyst` |
-| Tracking & Measurement Specialist | Expert in conversion tracking architecture, tag management, and attribution modeling across Google Tag Manager, GA4, Google Ads, Meta CAPI, LinkedIn Insight Tag, and server-side… | `paid-media-tracking-specialist` |
 
 ### Product (`product`, 6)
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ Product Manager | Holistic product leader who owns the full product lifecycle — from discovery and strategy through roadmap, stakeholder alignment, go-to-market, and outcome measurement. Bridges… | `product-manager` |
 | Behavioral Nudge Engine | Behavioral psychology specialist that adapts software interaction cadences and styles to maximize user motivation and success. | `product-behavioral-nudge-engine` |
 | DX Engineer | Removes every unnecessary step between a developer and their first success — SDK samples, onboarding flows, error messages, and the feedback loops that make products feel like t… | `product-dx-engineer` |
 | Feedback Synthesizer | Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback into quantitative… | `product-feedback-synthesizer` |
-| Product Manager | Holistic product leader who owns the full product lifecycle — from discovery and strategy through roadmap, stakeholder alignment, go-to-market, and outcome measurement. Bridges… | `product-manager` |
 | Sprint Prioritizer | Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business value delivery th… | `product-sprint-prioritizer` |
 | Trend Researcher | Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionable insights that d… | `product-trend-researcher` |
 
@@ -854,11 +887,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ Senior Project Manager | Converts specs to tasks and remembers previous projects. Focused on realistic scope, no background processes, exact spec requirements | `project-manager-senior` |
 | Experiment Tracker | Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiments, and hypothesis… | `project-management-experiment-tracker` |
 | Jira Workflow Steward | Expert delivery operations specialist who enforces Jira-linked Git workflows, traceable commits, structured pull requests, and release-safe branch strategy across software teams. | `project-management-jira-workflow-steward` |
 | Meeting Notes Specialist | Extract structured decisions, action items, and open questions from meeting transcripts or rough notes into a clean 4-section summary. | `project-management-meeting-notes-specialist` |
 | Project Shepherd | Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects from conception to… | `project-management-project-shepherd` |
-| Senior Project Manager | Converts specs to tasks and remembers previous projects. Focused on realistic scope, no background processes, exact spec requirements | `project-manager-senior` |
 | Studio Operations | Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, maintaining produ… | `project-management-studio-operations` |
 | Studio Producer | Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Focused on aligning… | `project-management-studio-producer` |
 
@@ -872,13 +905,13 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
+| ★ Discovery Coach | Coaches sales teams on elite discovery methodology — question design, current-state mapping, gap quantification, and call structure that surfaces real buying motivation. | `sales-discovery-coach` |
+| ★ Offer & Lead Gen Strategist | Top-of-funnel architect who designs irresistible offers and lead magnets that attract qualified buyers at scale. Specializes in value-equation offer construction, lead magnet ty… | `sales-offer-lead-gen-strategist` |
+| ★ Outbound Strategist | Signal-based outbound specialist who designs multi-channel prospecting sequences, defines ICPs, and builds pipeline through research-driven personalization — not volume. | `sales-outbound-strategist` |
+| ★ Proposal Strategist | Strategic proposal architect who transforms RFPs and sales opportunities into compelling win narratives. Specializes in win theme development, competitive positioning, executive… | `sales-proposal-strategist` |
 | Account Strategist | Expert post-sale account strategist specializing in land-and-expand execution, stakeholder mapping, QBR facilitation, and net revenue retention. Turns closed deals into long-ter… | `sales-account-strategist` |
 | Deal Strategist | Senior deal strategist specializing in MEDDPICC qualification, competitive positioning, and win planning for complex B2B sales cycles. Scores opportunities, exposes pipeline ris… | `sales-deal-strategist` |
-| Discovery Coach | Coaches sales teams on elite discovery methodology — question design, current-state mapping, gap quantification, and call structure that surfaces real buying motivation. | `sales-discovery-coach` |
-| Offer & Lead Gen Strategist | Top-of-funnel architect who designs irresistible offers and lead magnets that attract qualified buyers at scale. Specializes in value-equation offer construction, lead magnet ty… | `sales-offer-lead-gen-strategist` |
-| Outbound Strategist | Signal-based outbound specialist who designs multi-channel prospecting sequences, defines ICPs, and builds pipeline through research-driven personalization — not volume. | `sales-outbound-strategist` |
 | Pipeline Analyst | Revenue operations analyst specializing in pipeline health diagnostics, deal velocity analysis, forecast accuracy, and data-driven sales coaching. Turns CRM data into actionable… | `sales-pipeline-analyst` |
-| Proposal Strategist | Strategic proposal architect who transforms RFPs and sales opportunities into compelling win narratives. Specializes in win theme development, competitive positioning, executive… | `sales-proposal-strategist` |
 | Sales Coach | Expert sales coaching specialist focused on rep development, pipeline review facilitation, call coaching, deal strategy, and forecast accuracy. Makes every rep and every deal be… | `sales-coach` |
 | Sales Engineer | Senior pre-sales engineer specializing in technical discovery, demo engineering, POC scoping, competitive battlecards, and bridging product capabilities to business outcomes. Wi… | `sales-engineer` |
 
@@ -989,11 +1022,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 
 | Agent | What it does | File |
 |---|---|---|
-| Accessibility Auditor | Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if… | `testing-accessibility-auditor` |
+| ★ Accessibility Auditor | Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if… | `testing-accessibility-auditor` |
+| ★ Reality Checker | Stops fantasy approvals, evidence-based certification - Default to "NEEDS WORK", requires overwhelming proof for production readiness | `testing-reality-checker` |
 | API Tester | Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integrations | `testing-api-tester` |
 | Evidence Collector | Screenshot-obsessed, fantasy-allergic QA specialist - Reports reproducible issues with evidence and marks untested scope honestly | `testing-evidence-collector` |
 | Performance Benchmarker | Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastructure | `testing-performance-benchmarker` |
-| Reality Checker | Stops fantasy approvals, evidence-based certification - Default to "NEEDS WORK", requires overwhelming proof for production readiness | `testing-reality-checker` |
 | Test Automation Engineer | Expert end-to-end test automation engineer for Playwright and Cypress — resilient selectors, flake elimination, isolated test data, CI parallelization, and trace-driven failure… | `testing-test-automation-engineer` |
 | Test Results Analyzer | Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activities | `testing-test-results-analyzer` |
 | Tool Evaluator | Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimization | `testing-tool-evaluator` |

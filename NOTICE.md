@@ -55,3 +55,5 @@ Skills listed as "installed from source" in the catalog have no licence that all
 ## Agents
 
 `agents/claude/` holds the 283 agents of [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (The Agency, MIT, copyright AgentLand Contributors), copied unchanged from commit `b859c515d813efcfc4755d3471dd9e7686c7706d`. `agents/codex/` holds the same agents converted to Codex's custom-agent TOML format by `maintenance/build_agents.py` (name, description and the agent's instructions, nothing else changed). Licence in `licenses/msitarzewski__agency-agents.txt`.
+
+`agents/claude/ads/` holds the 23 worker agents of [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) (MIT), from commit `fc3908e786c318776df89a3a098333da377364be`, the same commit as its skills. They are copied unchanged except that references to the skill's own folder (`ads/SKILL.md`, `ads/references/`) now point to its folder name in this library (`claude-ads-ads/...`). Its two maintainer-only agents (`release-verifier`, `skill-reviewer`) are left out. Licence in `licenses/AgriciDaniel__claude-ads.txt`.

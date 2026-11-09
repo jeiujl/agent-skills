@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install skills from this library into Claude Code (~/.claude/skills) and
-# Codex (~/.agents/skills), and The Agency's agents into ~/.claude/agents and
-# ~/.codex/agents. Run ./install.sh --help for options.
+# Codex (~/.agents/skills), and agents (The Agency + claude-ads) into
+# ~/.claude/agents and ~/.codex/agents. Run ./install.sh --help for options.
 #
 # Only skills and agents this script installed are ever replaced or removed:
 # it keeps a list of them in each folder (.agent-skills-managed), so your own
@@ -12,6 +12,7 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 INDEX="$ROOT/index.tsv"
 CORE="$ROOT/profiles/core.txt"
 AGENT_INDEX="$ROOT/agents/index.tsv"
+AGENT_CORE="$ROOT/profiles/agents-core.txt"
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/skills"
 CODEX_DIR="$HOME/.agents/skills"
 CLAUDE_AGENTS="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/agents"
@@ -29,6 +30,7 @@ DO_LIST=0
 LIST_AGENTS=""
 DO_LIST_AGENTS=0
 PROFILE_GIVEN=0
+PROFILE_NAME=""
 NO_AGENTS=0
 SETUP_REA=0
 SETUP_GRAPHIFY=0
@@ -41,19 +43,22 @@ usage() {
   cat <<'EOF'
 Usage: ./install.sh [options]
 
-With no options, installs the core skills and all of The Agency's agents into
-Claude Code and Codex.
+With no options, installs the core skills and the core agents into Claude Code and
+Codex. Everything else stays in this folder, and the library-router skill reads the
+best skill or agent from it when a task needs one.
 
 Skills
-  --profile core|all     Install a whole profile (default: core), plus all agents
+  --profile core|all     Install a whole profile (default: core), with the matching
+                         agents (core agents, or all of them)
   --add NAMES            Install skills by name or category, comma-separated
                          (e.g. --add gsap-timeline,motion,seo)
   --remove NAMES         Remove skills (names or categories) this script installed
   --list [CATEGORY]      List skills (* = core) and exit
 
-Agents (The Agency, msitarzewski/agency-agents)
-  --agents NAMES         Install agents by division or name, comma-separated
-                         (e.g. --agents engineering,design or --agents all)
+Agents (The Agency + claude-ads ads agents)
+  --agents NAMES         Install agents: core, all, a division or an agent id,
+                         comma-separated (e.g. --agents core,ads or --agents all).
+                         core and all also remove other agents this script installed
   --no-agents            Don't install agents in this run
   --remove-agents [NAMES]
                          Remove agents this script installed (all if no names)
@@ -79,7 +84,7 @@ Skill categories: design motion html frontend backend tokens workflow testing
                   security marketing sales seo ads research learning automation writing agents
 Agent divisions:  academic design engineering finance game-development gis healthcare
                   marketing paid-media product project-management research sales
-                  security spatial-computing specialized support testing
+                  security spatial-computing specialized support testing ads
 EOF
 }
 
@@ -88,7 +93,7 @@ has_value() { [ $# -gt 1 ] && [ "${2#-}" = "$2" ]; }
 
 while [ $# -gt 0 ]; do
   case "$1" in
-    --profile) WANT+=("$2"); PROFILE_GIVEN=1; shift 2 ;;
+    --profile) WANT+=("$2"); PROFILE_GIVEN=1; PROFILE_NAME="$2"; shift 2 ;;
     --add) while read -r n; do WANT+=("$n"); done < <(split "$2"); shift 2 ;;
     --remove) while read -r n; do DROP+=("$n"); done < <(split "$2"); shift 2 ;;
     --agents) while read -r n; do AGENT_WANT+=("$n"); done < <(split "$2"); shift 2 ;;
@@ -128,9 +133,12 @@ if [ "$DO_LIST" = 1 ]; then
   exit 0
 fi
 
+agent_core_ids() { grep -v '^#' "$AGENT_CORE" | sed '/^$/d'; }
+
 if [ "$DO_LIST_AGENTS" = 1 ]; then
-  awk -F'\t' -v d="$LIST_AGENTS" 'NR > 1 && (d == "" || $2 == d) { printf "%-48s %-20s %s\n", $1, $2, $4; n++ }
-    END { printf "\n%d agents\n", n }' "$AGENT_INDEX"
+  awk -F'\t' -v d="$LIST_AGENTS" 'NR == FNR { if ($0 !~ /^#/ && $0 != "") core[$0] = 1; next }
+    FNR > 1 && (d == "" || $2 == d) { printf "%s %-48s %-20s %s\n", ($1 in core ? "*" : " "), $1, $2, $4; n++ }
+    END { printf "\n%d agents (* = core)\n", n }' "$AGENT_CORE" "$AGENT_INDEX"
   exit 0
 fi
 
@@ -152,6 +160,11 @@ expand() {
 # Turn divisions and agent names into index rows: id <tab> division <tab> codex name
 expand_agents() {
   for token in "$@"; do
+    if [ "$token" = core ]; then
+      awk -F'\t' 'NR == FNR { if ($0 !~ /^#/ && $0 != "") core[$0] = 1; next }
+        FNR > 1 && ($1 in core) { print $1 "\t" $2 "\t" $3 }' "$AGENT_CORE" "$AGENT_INDEX"
+      continue
+    fi
     awk -F'\t' -v t="$token" 'NR > 1 && (t == "all" || $1 == t || $2 == t || $3 == t) { found = 1; print $1 "\t" $2 "\t" $3 }
       END { exit !found }' "$AGENT_INDEX" ||
       echo "  ! no agent or division called '$token' (see ./install.sh --list-agents)" >&2
@@ -209,6 +222,11 @@ install_one() {
   cp -R "$src" "$dir/$name"
   # Some skills ship a Windows version of SKILL.md; only install.ps1 uses it
   rm -f "$dir/$name/SKILL.windows.md"
+  # Skills that need to know where this library is (library-router)
+  if grep -q '{{AGENT_SKILLS_ROOT}}' "$dir/$name/SKILL.md" 2>/dev/null; then
+    esc="$(printf '%s' "$ROOT" | sed 's/[&|\\]/\\&/g')"
+    sed "s|{{AGENT_SKILLS_ROOT}}|$esc|g" "$dir/$name/SKILL.md" > "$dir/$name/SKILL.md.tmp" && mv "$dir/$name/SKILL.md.tmp" "$dir/$name/SKILL.md"
+  fi
   mark_managed "$dir" "$name"
   echo "  + $name"
 }
@@ -262,8 +280,8 @@ sync_agents() {
       cp "$(agent_source "$dir" "$id" "$div" "$codex")" "$dir/$file"
       mark_managed "$dir" "$file"
     done <<< "$wanted"
-    # After a full install, drop agents this script installed that are no longer in the library
-    if printf '%s\n' "${AGENT_WANT[@]}" | grep -qx all && [ -f "$dir/$MANIFEST" ]; then
+    # core and all are whole sets: drop agents this script installed that aren't in them
+    if printf '%s\n' "${AGENT_WANT[@]}" | grep -qx -e all -e core && [ -f "$dir/$MANIFEST" ]; then
       local current
       current="$(echo "$wanted" | while IFS="$(printf '\t')" read -r id div codex; do agent_file "$dir" "$id" "$div" "$codex"; done)"
       while read -r file; do
@@ -283,7 +301,8 @@ if [ "$RESET" = 0 ] && [ ${#DROP[@]} -eq 0 ] && [ ${#WANT[@]} -eq 0 ] &&
   DEFAULT_RUN=1; WANT=(core)
 fi
 if [ "$NO_AGENTS" = 1 ]; then AGENT_WANT=()
-elif [ ${#AGENT_WANT[@]} -eq 0 ] && { [ "$DEFAULT_RUN" = 1 ] || [ "$PROFILE_GIVEN" = 1 ]; }; then AGENT_WANT=(all)
+elif [ ${#AGENT_WANT[@]} -eq 0 ] && [ "$PROFILE_NAME" = all ]; then AGENT_WANT=(all)
+elif [ ${#AGENT_WANT[@]} -eq 0 ] && { [ "$DEFAULT_RUN" = 1 ] || [ "$PROFILE_GIVEN" = 1 ]; }; then AGENT_WANT=(core)
 fi
 
 [ "$DRY_RUN" = 1 ] && echo "Dry run: nothing will be changed."
@@ -307,7 +326,7 @@ if [ "$RESET" = 1 ] || [ ${#AGENT_WANT[@]} -gt 0 ] || [ ${#AGENT_DROP[@]} -gt 0 
   for dir in "${AGENT_DIRS[@]}"; do
     echo "$dir"
     sync_agents "$dir"
-    echo "  $(managed_count "$dir") agents from The Agency installed here"
+    echo "  $(managed_count "$dir") agents installed here"
   done
 fi
 

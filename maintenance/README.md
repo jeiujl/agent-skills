@@ -21,14 +21,20 @@ The 11 `sales` skills (`contract-writer`, `follow-up`, `forecaster`, `pipeline`,
 
 `reverse-engineer-anything` was also added by hand, from the npm package `rea-agents` (it ships in `package/skills/`). To update it, download the new version's tarball, check its hash against `npm view rea-agents@<version> dist.integrity`, copy `package/skills/reverse-engineer-anything` over `library/`, and change `REA_VERSION` in `install.sh` and `$ReaVersion` in `install.ps1` to the same version, so the skill and the server always match.
 
-## Agents (The Agency)
+## Agents
 
-`agents/` is built from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) by `build_agents.py`. To refresh it:
+`agents/` is built by `build_agents.py` from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents), plus the ads worker agents of [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) with `--ads`. Always pass `--ads`, or the `ads` division is dropped. To refresh:
 
 ```bash
 git clone --depth 1 https://github.com/msitarzewski/agency-agents /tmp/agency
-python3 -I maintenance/build_agents.py /tmp/agency "$(git -C /tmp/agency rev-parse HEAD)"
+git clone --depth 1 https://github.com/AgriciDaniel/claude-ads /tmp/claude-ads
+python3 -I maintenance/build_agents.py /tmp/agency "$(git -C /tmp/agency rev-parse HEAD)" \
+  --ads /tmp/claude-ads "$(git -C /tmp/claude-ads rev-parse HEAD)"
 ```
+
+`--ads` copies claude-ads' `agents/*.md` (except `release-verifier.md` and `skill-reviewer.md`, which are for its maintainers) into the `ads` division and rewrites `ads/SKILL.md` and `ads/references/` to `claude-ads-ads/...`, the skill's folder name here. Use the same claude-ads commit as the `claude-ads-*` skills in `index.tsv`.
+
+`profiles/agents-core.txt` lists the agents installed by default; check its ids still exist after a refresh (`./install.sh --list-agents` marks them with `*`). `library/library-router` was written by hand for this library: its `{{AGENT_SKILLS_ROOT}}` placeholder is replaced with the repo's path by the installers.
 
 It reads only the division folders listed in the checkout's `divisions.json`, copies the agent files to `agents/claude/` unchanged, writes Codex `.toml` versions to `agents/codex/` (checking each one parses back to the same text), and rewrites `agents/index.tsv`, which the installers read. Scan the new files (the same rules as `scan.py`) before committing, then update the agent counts in `README.md`, the agents list in `CATALOG.md` and the commit in `NOTICE.md`. Agents removed upstream are removed from people's machines the next time they run the installer.
 

@@ -1,6 +1,8 @@
-"""Build agents/ from a checkout of msitarzewski/agency-agents.
+"""Build agents/ from a checkout of msitarzewski/agency-agents, plus the agents of
+AgriciDaniel/claude-ads (division "ads").
 
-    python3 -I maintenance/build_agents.py <agency-agents checkout> <commit>
+    python3 -I maintenance/build_agents.py <agency-agents checkout> <commit> \
+        [--ads <claude-ads checkout> <commit>]
 
 Writes, replacing what is there:
   agents/claude/<division>/<file>.md   the agent files, copied unchanged
@@ -10,11 +12,19 @@ Writes, replacing what is there:
   agents/index.tsv                     id, division, codex, name, description
   agents/SOURCE                        repo and commit the files came from
 
-Nothing from the checkout is executed; it is only read.
+claude-ads agents are copied with one change: their references to the claude-ads
+conductor skill (`ads/SKILL.md`, `ads/references/...`) point at `claude-ads-ads`, the
+name that skill has in this library (another skill is called `ads`). Its two
+release/maintenance agents are left out.
+
+Nothing from a checkout is executed; it is only read.
 """
 import json, os, re, shutil, sys, tomllib
 
 SRC, COMMIT = sys.argv[1], sys.argv[2]
+ADS = sys.argv[sys.argv.index('--ads') + 1:sys.argv.index('--ads') + 3] if '--ads' in sys.argv else None
+ADS_SKIP = {'release-verifier.md', 'skill-reviewer.md'}
+ADS_FIX = re.compile(r'(?<![\w./-])ads/(SKILL\.md|references/)')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'agents')
 DIVISIONS = list(json.load(open(os.path.join(SRC, 'divisions.json'), encoding='utf-8'))['divisions'])
@@ -90,15 +100,26 @@ for sub in ('claude', 'codex'):
     shutil.rmtree(os.path.join(OUT, sub), ignore_errors=True)
 os.makedirs(os.path.join(OUT, 'codex'))
 
+def agent_files():
+    """(division, path, text) for every agent file, Agency first, then claude-ads."""
+    for div in DIVISIONS:
+        for r, _, files in sorted(os.walk(os.path.join(SRC, div))):
+            for f in sorted(files):
+                path = os.path.join(r, f)
+                if f.endswith('.md') and not os.path.islink(path):
+                    yield div, path, open(path, 'rb').read().decode('utf-8')
+    if ADS:
+        folder = os.path.join(ADS[0], 'agents')
+        for f in sorted(os.listdir(folder)):
+            path = os.path.join(folder, f)
+            if f.endswith('.md') and f not in ADS_SKIP and not os.path.islink(path):
+                yield 'ads', path, ADS_FIX.sub(r'claude-ads-ads/\1', open(path, 'rb').read().decode('utf-8'))
+
+
 rows, slugs, ids = [], {}, {}
-for div in DIVISIONS:
-    for r, _, files in sorted(os.walk(os.path.join(SRC, div))):
-        for f in sorted(files):
-            path = os.path.join(r, f)
-            if not f.endswith('.md') or os.path.islink(path):
-                continue
-            raw = open(path, 'rb').read()
-            text = raw.decode('utf-8')
+for div, path, text in agent_files():
+            f = os.path.basename(path)
+            raw = text.encode('utf-8')
             if not text.startswith('---\n'):
                 continue
             name, desc = field(text, 'name'), field(text, 'description')
@@ -126,5 +147,5 @@ with open(os.path.join(OUT, 'index.tsv'), 'w', encoding='utf-8', newline='\n') a
     for row in rows:
         fh.write('\t'.join(row) + '\n')
 open(os.path.join(OUT, 'SOURCE'), 'w', encoding='utf-8', newline='\n').write(
-    f'msitarzewski/agency-agents {COMMIT}\n')
-print(f'{len(rows)} agents in {len(DIVISIONS)} divisions')
+    f'msitarzewski/agency-agents {COMMIT}\n' + (f'AgriciDaniel/claude-ads {ADS[1]} (division ads)\n' if ADS else ''))
+print(f'{len(rows)} agents in {len({r[1] for r in rows})} divisions')

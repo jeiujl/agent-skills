@@ -1,10 +1,11 @@
 # Agent skills
 
-A library of **526 agent skills** and **283 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents): specialist personas from frontend developer to brand strategist.
+A library of **527 agent skills** and **306 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents) (specialist personas from frontend developer to brand strategist) plus the ads workers from [claude-ads](https://github.com/AgriciDaniel/claude-ads).
 
-- **499** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
-- **58** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
-- **283 agents** in `agents/`, all installed by default (see [Agents](#agents-the-agency)).
+- **500** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
+- **59** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
+- **306 agents** in `agents/`. The **23** best are installed by default (`profiles/agents-core.txt`); the rest stay in the repo (see [Agents](#agents)).
+- **`library-router`** (a core skill) searches the whole library when a task needs a specialist, and reads only the 1-3 skills or agents that fit. So nothing is ever removed, and you only pay for what a task uses.
 - **REA (Reverse Engineer Anything)**: its skill is in the core set, and `-SetupRea` connects the REA tool itself (see [REA](#rea-reverse-engineer-anything)).
 - Everything was checked before being added. See [`docs/security-review.md`](docs/security-review.md).
 
@@ -28,7 +29,7 @@ cd agent-skills
 ./install.sh
 ```
 
-This installs the core skills and all agents into:
+This installs the core skills and the core agents into:
 - **Claude Code:** skills in `~/.claude/skills`, agents in `~/.claude/agents` (Windows: `%USERPROFILE%\.claude\...`)
 - **Codex:** skills in `~/.agents/skills`, agents in `~/.codex/agents` (Windows: `%USERPROFILE%\.agents\skills`, `%USERPROFILE%\.codex\agents`)
 
@@ -53,9 +54,12 @@ Use a skill name, a category, or a profile. Commas separate several.
 
 The installer only ever replaces or removes skills *it* installed (it keeps a list in each skills folder), so your own skills are safe. If you already have a skill with the same name, it's skipped.
 
-## Why only 58 skills are active
+## Why only 59 skills and 23 agents are active
 
-Every installed skill's name and description is loaded into every session, so 500 active skills would cost thousands of tokens each time. They'd also make it harder for Claude to pick the right one. Keep the active set to what you use, and add a category when a project needs it, such as `seo` for an SEO job.
+Every installed skill's and agent's name and description is loaded into every session, so all 527 skills and 306 agents would cost tens of thousands of tokens each time. They'd also make it harder for Claude to pick the right one. So only the best are installed, and everything else stays in the repo:
+
+- **`library-router`** finds the right specialist on demand. When a task needs one (a Meta ads audit, programmatic SEO, a niche framework), it searches `catalog.json` and `agents/index.tsv`, then reads only the 1-3 that fit. It tells you which one it used, and suggests installing it if you keep needing it.
+- **Add a category** when a project needs it for a while, such as `-Add seo` for an SEO job.
 
 ## What's in the core set
 
@@ -66,6 +70,7 @@ Every installed skill's name and description is loaded into every session, so 50
 - **Research & skills:** `last30days`, `deep-research`, `skill-creator`, `find-skills`
 - **Marketing:** `marketing-psychology`, `copywriting`, `cro`, `seo-audit`, `ai-seo`, `pricing`
 - **Automation & security:** `n8n-workflow-patterns`, `agent-browser`, `security-review`, `reverse-engineer-anything` (REA)
+- **Library:** `library-router` (finds anything else in this library on demand)
 - **Learning & writing:** `learn`, `study-guide-builder`, `humanizer`, `false-flag-humanizer`
 - **Sales (Closer):** `prospector`, `researcher`, `follow-up`, `scheduler`, `sales-coach`, `proposal-writer`, `contract-writer`, `pipeline`, `record-keeper`, `win-back`, `forecaster`. Install or remove these 11 together (`-Add sales` / `-Remove sales`): they share one CRM, and the others need `pipeline` next to them.
 
@@ -78,23 +83,34 @@ git pull
 ./install.sh            # or .\install.ps1 on Windows: refreshes the skills and agents it installed
 ```
 
-## Agents (The Agency)
+A plain run also sets the agents back to the 23 core ones. If you added a division you want to keep, include it each time: `.\install.ps1 -Agents core,ads`.
 
-`agents/` holds all 283 agents from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT), in 18 divisions. An agent is a specialist persona (a "Frontend Developer", "Growth Hacker" or "Reality Checker") that Claude Code or Codex can hand a task to. Ask for one by name, e.g. *"Use the Reality Checker agent to verify this is production-ready."*
+## Agents
 
+`agents/` holds **306 agents** in 19 divisions:
+- **283** from [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (MIT). An agent is a specialist persona (a "Frontend Developer", "Growth Hacker" or "Reality Checker") that Claude Code or Codex can hand a task to. Ask for one by name, e.g. *"Use the Reality Checker agent to verify this is production-ready."*
+- **23** ads workers (division `ads`) from [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) (MIT): platform auditors (Meta, Google, TikTok, LinkedIn, Amazon and more), tracking, budget and compliance auditors, and creative workers (strategist, copywriter, visual designer). They work under the `claude-ads-ads` skill, which decides which ones to run.
+
+Where they go:
 - **Claude Code** gets the original files in `~/.claude/agents`.
 - **Codex** gets the same agents converted to its custom-agent format (`.toml`) in `~/.codex/agents`.
 
+**Only the 23 core agents are installed by default** (★ in the catalog, listed in `profiles/agents-core.txt`): UI and UX design, AI, backend and frontend engineering, code review, multi-agent architecture, rapid prototyping, content, growth, SEO and social, paid social, PPC and tracking, product and project management, sales discovery, outbound, offers and proposals, accessibility and the Reality Checker. Edit that file to change them. The other 283 stay in the repo, and `library-router` reads one when a task needs it.
+
 | What | Windows | Mac / Linux |
 |---|---|---|
-| Install only some divisions | `.\install.ps1 -Agents engineering,design` | `./install.sh --agents engineering,design` |
+| Install the core agents (default) | `.\install.ps1` | `./install.sh` |
+| Add divisions or agents | `.\install.ps1 -Agents core,ads` | `./install.sh --agents core,ads` |
+| Install all 306 | `.\install.ps1 -Agents all` | `./install.sh --agents all` |
 | Remove a division | `.\install.ps1 -RemoveAgents marketing` | `./install.sh --remove-agents marketing` |
 | Remove all agents | `.\install.ps1 -RemoveAgents all` | `./install.sh --remove-agents` |
-| List agents (or one division) | `.\install.ps1 -ListAgents engineering` | `./install.sh --list-agents engineering` |
+| List agents (`*` = core) | `.\install.ps1 -ListAgents ads` | `./install.sh --list-agents ads` |
 
-**Divisions:** `academic` `design` `engineering` `finance` `game-development` `gis` `healthcare` `marketing` `paid-media` `product` `project-management` `research` `sales` `security` `spatial-computing` `specialized` `support` `testing`
+`core` and `all` make the installed set match exactly, so a plain re-run goes back to the 23 core agents. List a division with `core` (e.g. `-Agents core,ads`) to keep it on top of the core set.
 
-Like skills, each installed agent's description is loaded into every session. All 283 together are about 63,000 characters (roughly 16,000 tokens) per session. If that's too much, keep only the divisions you use: `-RemoveAgents all` then `-Agents engineering,design,marketing`. Your own agents are never touched; an agent of yours with the same file name is skipped.
+**Divisions:** `academic` `ads` `design` `engineering` `finance` `game-development` `gis` `healthcare` `marketing` `paid-media` `product` `project-management` `research` `sales` `security` `spatial-computing` `specialized` `support` `testing`
+
+Each installed agent's description is loaded into every session. The 23 core agents are about 5,000 characters (roughly 1,300 tokens); all 306 would be about 74,000 characters (roughly 18,000 tokens). Your own agents are never touched; an agent of yours with the same file name is skipped.
 
 ## REA (Reverse Engineer Anything)
 

@@ -262,6 +262,7 @@ lead-intelligence	library	marketing	affaan-m/ecc	90606c8315ee09cafc303515c5f3302
 lead-magnets	library	marketing	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/lead-magnets
 lean-build	library	tokens	JuliusBrussee/caveman	b4531dfc05a3ef0ba93b57e8bfa5f48564a4b4d6	skills/lean-build
 learn	library	learning	Anthropic (supplied)		library/learn
+library-router	library	agents	jeiujl (written for this library)		library/library-router
 link-building	library	seo	coreyhaines31/marketingskills	e85f3cbc2e4a79bf33b2a12e9bdd9087d414735b	skills/link-building
 liquid-glass-design	library	design	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/liquid-glass-design
 loop-me	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/in-progress/loop-me
