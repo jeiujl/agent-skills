@@ -87,6 +87,27 @@ Check what's missing for a task: `npx rea-agents@6.8.0 doctor --json`. Remove RE
 
 **Updating to a newer REA:** run `npx rea-agents@latest setup` yourself. That also installs REA's newer skill, so remove this library's copy first (`./install.sh --remove reverse-engineer-anything`) so the two don't overwrite each other.
 
+## Free open-source apps that replace paid ones
+
+Nine apps from an Instagram list (@chiefagent.ai, Nov 2026), each checked on GitHub on Nov 9, 2026 (the commit is the one checked). They are full apps, not skills, so nothing is copied here. "Free" means no subscription for the software: you still host it yourself or bring your own API keys. Get them **only from the repos below**: several have copycat forks (OpenSEO alone has at least three).
+
+| Replaces | App | Repo (commit) | Licence | How you run it | Worth it for Flowa? |
+|---|---|---|---|---|---|
+| Calendly | Cal.diy | [calcom/cal.diy](https://github.com/calcom/cal.diy) (`2eb48ec`) | MIT | Self-host (Docker, Node, Postgres). Cal.com's own hosted plan is closed-source now; Cal.diy is its open community edition | **Yes**: a booking link for jerryliu.ca and for client builds. If you don't want to run a server, Cal.com's free hosted plan does the same job |
+| Intercom | Chatwoot | [chatwoot/chatwoot](https://github.com/chatwoot/chatwoot) (`fa611d2`) | MIT (except its `enterprise/` folder) | Self-host (Docker) or Chatwoot Cloud | **Yes**: one inbox for chat, email, WhatsApp and Instagram DMs; a good base for client lead follow-up systems |
+| Semrush / Ahrefs | OpenSEO | [every-app/open-seo](https://github.com/every-app/open-seo) (`46b815b`) | MIT | Self-host (it can run on Cloudflare); you pay only for the SEO data you use (data-provider API key) | **Yes** for HayesX and local SEO work, instead of a $140+/mo plan |
+| Loom | Cap | [CapSoftware/Cap](https://github.com/CapSoftware/Cap) (`5a2823d`) | AGPL-3.0 (a few parts MIT) | Desktop app (Mac, Windows) | Yes: demo videos for prospects |
+| Higgsfield | ComfyUI | [Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI) (`fca60fe`) | GPL-3.0 | Runs on your own computer; needs a strong GPU (NVIDIA best) to be usable | Only with a good graphics card; otherwise keep Higgsfield |
+| ElevenLabs | VoiceStudio | [debpalash/voicestudio](https://github.com/debpalash/voicestudio) (`0095a56`) | AGPL-3.0 | Runs on your own computer (a GPU helps) | Later: voiceovers for ad videos. Only clone voices you have permission to use |
+| Wispr Flow | OpenWhispr | [OpenWhispr/openwhispr](https://github.com/OpenWhispr/openwhispr) (`2e4768a`) | MIT | Desktop app; local models, or cloud models with your own key | Optional: dictate prompts and emails |
+| Notion | AppFlowy | [AppFlowy-IO/AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) (`8fcee27`) | AGPL-3.0 | Desktop and mobile apps; optional self-hosted sync | Skip for now |
+| Asana | OpenProject | [opf/openproject](https://github.com/opf/openproject) (`384689f`) | GPL-3.0 | Self-host (Docker) | Skip for now |
+
+**Before you build client work on one of these:**
+- **AGPL apps** (Cap, VoiceStudio, AppFlowy): if you change the code and run it as a service for a client, you must share your changed source. Using them unmodified, or for yourself, is fine.
+- **Self-hosting is a job:** updates, backups and security are on you, or on your client's monthly fee if you run it for them. Price that in.
+- Check each repo's README for its current install steps; these change often.
+
 ## Plugin versions of skills in this library
 Use one of these *instead of* the copies in `library/` if you'd like automatic updates from the authors:
 ```

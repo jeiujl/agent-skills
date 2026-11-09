@@ -131,7 +131,7 @@ Analysis runs locally. Use it only on software you own or are allowed to analyse
 
 ## Apps and plugins
 
-OmniRoute, claude-mem, Ruflo, browser-use, context-mode, the Claude Security plugin, and plugin versions of some skills aren't plain skills. They run code on your computer. Install commands and warnings are in **[tools/SETUP.md](tools/SETUP.md)**.
+OmniRoute, claude-mem, Ruflo, browser-use, context-mode, the Claude Security plugin, and plugin versions of some skills aren't plain skills. They run code on your computer. Install commands and warnings are in **[tools/SETUP.md](tools/SETUP.md)**. It also lists 9 free open-source apps that replace paid ones (Calendly, Intercom, Semrush, Loom, Higgsfield, ElevenLabs, Wispr Flow, Notion, Asana), with the real repos, licences and which are worth it.
 
 ## Claude in the browser or desktop app
 
