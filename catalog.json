@@ -560,6 +560,20 @@
   "core": true
  },
  {
+  "name": "agent-reach",
+  "kind": "library",
+  "category": "research",
+  "source": "Panniantong/Agent-Reach",
+  "license": "MIT",
+  "commit": "c70ae6da5d39bc90e09ad2ae0575ccc89f31e284",
+  "path": "agent_reach/skill",
+  "original": "agent-reach",
+  "desc": "Read and search platform content when built-in web tools cannot retrieve it; manage Agent Reach channels and sessions.",
+  "needs": "uv + Agent Reach CLI (official GitHub package; see tools/SETUP.md)",
+  "scripts": false,
+  "core": false
+ },
+ {
   "name": "agentic-actions-auditor",
   "kind": "library",
   "category": "security",

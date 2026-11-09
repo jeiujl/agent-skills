@@ -96,6 +96,12 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 | `wizard` | 1 | none |  |
 | `writing-skills` | 1 | none |  |
 
+## Agent Reach addition
+
+The Agent Reach instructions (English entry point and three upstream reference files) were read before inclusion at commit `c70ae6da5d39bc90e09ad2ae0575ccc89f31e284`, with its MIT licence. The added folder contains Markdown only: no executable scripts, binaries, bundled dependencies or credentials. Version and channel-table placeholders were resolved and a first-time setup note was added.
+
+This review covers the bundled instructions, not a full audit or live validation of the separate CLI and its dependencies. Setup and channel additions download and run tools; browser channels may copy a site's existing session into a dedicated browser. Queries can send URLs, search terms and platform requests to external services. Platform login and optional keys remain separate setup steps. The skill restricts use to reading and forbids asking for passwords or printing credentials. See [setup](../tools/SETUP.md#agent-reach).
+
 ## Before you trust a new skill
 
 Skills can tell Claude to run commands, so treat a skill like any code you download. Read its `SKILL.md`, look at any `scripts/` folder, and be wary of skills that ask for API keys, install things globally, or contact services unrelated to what they do.

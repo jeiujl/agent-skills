@@ -43,3 +43,7 @@ It reads only the division folders listed in the checkout's `divisions.json`, co
 ## Graphify
 
 `library/graphify` is updated by hand from [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify): `graphify/skill.md` becomes `SKILL.md`, `graphify/skill-windows.md` becomes `SKILL.windows.md` (install.ps1 swaps it in on Windows; install.sh deletes it), and `graphify/skills/claude/references/` becomes `references/`. Update the commit in `index.tsv` and `catalog.json` when you refresh it. The skill needs the `graphifyy` package, which `--setup-graphify` / `-SetupGraphify` installs.
+
+## Agent Reach
+
+`agent-reach` was added by hand from `Panniantong/Agent-Reach` at `c70ae6da5d39bc90e09ad2ae0575ccc89f31e284`. Preserve it and its catalog/index entries after rebuilding. Copy `agent_reach/skill/SKILL_en.md` as `library/agent-reach/SKILL.md`, fill the version from `pyproject.toml`, replace the generated channel-table placeholder with a pointer to `agent-reach channels`, retain the first-time setup note, and copy `agent_reach/skill/references/` unchanged. Refresh the MIT licence and provenance in `NOTICE.md`, and review the new instructions before updating.

@@ -1,8 +1,8 @@
 # Agent skills
 
-A library of **528 agent skills** and **306 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents) (specialist personas from frontend developer to brand strategist) plus the ads workers from [claude-ads](https://github.com/AgriciDaniel/claude-ads).
+A library of **529 agent skills** and **306 agents** for **Claude Code** and **Codex**. The skills come from 45 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents) (specialist personas from frontend developer to brand strategist) plus the ads workers from [claude-ads](https://github.com/AgriciDaniel/claude-ads).
 
-- **501** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
+- **502** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
 - **60** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
 - **306 agents** in `agents/`. The **23** best are installed by default (`profiles/agents-core.txt`); the rest stay in the repo (see [Agents](#agents)).
 - **`library-router`** (a core skill) searches the whole library when a task needs a specialist, and reads only the 1-3 skills or agents that fit. So nothing is ever removed, and you only pay for what a task uses.
@@ -56,7 +56,7 @@ The installer only ever replaces or removes skills *it* installed (it keeps a li
 
 ## Why only 60 skills and 23 agents are active
 
-Every installed skill's and agent's name and description is loaded into every session, so all 528 skills and 306 agents would cost tens of thousands of tokens each time. They'd also make it harder for Claude to pick the right one. So only the best are installed, and everything else stays in the repo:
+Every installed skill's and agent's name and description is loaded into every session, so all 529 skills and 306 agents would cost tens of thousands of tokens each time. They'd also make it harder for Claude to pick the right one. So only the best are installed, and everything else stays in the repo:
 
 - **`library-router`** finds the right specialist on demand. When a task needs one (a Meta ads audit, programmatic SEO, a niche framework), it searches `catalog.json` and `agents/index.tsv`, then reads only the 1-3 that fit. It tells you which one it used, and suggests installing it if you keep needing it.
 - **Add a category** when a project needs it for a while, such as `-Add seo` for an SEO job.
@@ -128,6 +128,10 @@ It has two parts:
    This runs REA's official setup (`npx rea-agents@6.8.0 setup`), which shows the changes it will make and asks before applying them. The installer never runs it unless you ask. Restart Claude Code / Codex afterwards.
 
 Analysis runs locally. Use it only on software you own or are allowed to analyse. Only install REA from npm `rea-agents` or github.com/morluto/rea: look-alike "reverse engineer anything" repos exist, some offering suspicious downloads. More in [tools/SETUP.md](tools/SETUP.md#rea-reverse-engineer-anything).
+
+## Agent Reach
+
+[Agent Reach](https://github.com/Panniantong/Agent-Reach) reads and searches platforms such as YouTube, Reddit, X, Bilibili and Xiaohongshu when built-in web tools cannot get the content. Add its instructions with `./install.sh --add agent-reach` (Windows: `.\install.ps1 -Add agent-reach`). It is optional, outside the core set. The separate CLI needs setup; see [Agent Reach setup](tools/SETUP.md#agent-reach). Installing the skill alone does not install the CLI or sign you into any platform.
 
 ## Apps and plugins
 

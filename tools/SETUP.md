@@ -4,6 +4,32 @@ These came up alongside the skills, but they're apps, plugins or background serv
 
 > **Don't double up.** Several projects offer both a plugin and plain skills. If you install the plugin version of superpowers, caveman, ponytail, UI UX Pro Max or impeccable, remove the copy this repo installed (for example `./install.sh --remove caveman`), so Claude doesn't see the same skill twice.
 
+## Agent Reach
+
+[Agent Reach](https://github.com/Panniantong/Agent-Reach) provides read-only platform search and reading. The library contains its instructions and references, not its Python program, browser or channel tools. Add the skill first:
+
+```powershell
+.\install.ps1 -Add agent-reach -NoAgents
+```
+
+Mac / Linux: `./install.sh --add agent-reach --no-agents`.
+
+Then install the CLI with [uv](https://docs.astral.sh/uv/getting-started/installation/) (Python 3.10+). The following pins the CLI to the same reviewed source commit as the bundled skill (1.6.1):
+
+```text
+uv tool install https://github.com/Panniantong/Agent-Reach/archive/c70ae6da5d39bc90e09ad2ae0575ccc89f31e284.zip
+agent-reach setup
+agent-reach doctor --text
+```
+
+**Do not run `pip install agent-reach` or `uv tool install agent-reach`: the PyPI package with that name is a different project.** Use the official GitHub URL above. Upstream's [installation guide](https://github.com/Panniantong/Agent-Reach/blob/c70ae6da5d39bc90e09ad2ae0575ccc89f31e284/docs/install.md) also offers the latest release.
+
+`setup` enables default channels, installs their dependencies and registers the skill with detected agents; it may refresh this library's copy with a generated version. `doctor` reports local readiness; `agent-reach check <channel> --text` tests a channel online. Setup success does not verify every platform.
+
+Add other platforms only when needed with `agent-reach add <channel>`. Some channels install browser tools and can reuse that site's existing browser session; otherwise `agent-reach login <channel>` opens a window for you to sign in. Keys are entered locally through `agent-reach configure <key>`. Sessions and configuration live under `~/.agent-reach/`. The bundled skill forbids posting, commenting, liking and messaging.
+
+Use `agent-reach update` to upgrade the CLI, channel tools and generated skill together. That moves beyond the commit pinned in this library.
+
 ## Claude Security (official Anthropic plugin)
 Deep vulnerability scanning of your own code inside Claude Code. Each finding is double-checked before it's reported.
 ```

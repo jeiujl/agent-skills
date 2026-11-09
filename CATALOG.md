@@ -1,6 +1,6 @@
 # Catalog
 
-501 skills in `library/`, plus 27 installed from their source repo. **60** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
+502 skills in `library/`, plus 27 installed from their source repo. **60** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -527,12 +527,13 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | `ads-youtube` | Audit YouTube Ads campaign setup, video inventory, Shorts, in-stream, CTV, creative, audiences, brand safety, bidding, and measurement. | [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) |  |
 | `claude-ads-ads` | Operate professional paid advertising across Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, and X. | [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) | optional ad-platform API tokens |
 
-## Research (`research`, 9)
+## Research (`research`, 10)
 
 | Skill | What it does | Source | Needs |
 |---|---|---|---|
 | ★ `deep-research` | Produce cited research reports from multiple web sources using firecrawl and exa MCP tools — plan sub-questions, search and deep-read sources, then synthesize findings with inline  | [affaan-m/ecc](https://github.com/affaan-m/ecc) |  |
 | ★ `last30days` | Research what people actually say about any topic in the last 30 days. | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) | Python 3; optional keys for more sources |
+| `agent-reach` | Read and search platform content when built-in web tools cannot retrieve it; manage channels and sessions. | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | uv + Agent Reach CLI from GitHub; [setup](tools/SETUP.md#agent-reach) |
 | `best-skills` | Daily cross-platform rankings of AI agent skills (skills.sh, ClawHub, Tencent SkillHub, GitHub, X/HN/Bluesky). | [LinklyAI/best-skills](https://github.com/LinklyAI/best-skills) |  |
 | `competitor-profiling` | When the user wants to research, profile, or analyze competitors from their URLs. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 | `competitors` | When the user wants to create competitor comparison or alternative pages for SEO and buyer-facing use. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |

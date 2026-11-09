@@ -12,6 +12,7 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [LinklyAI/best-skills](https://github.com/LinklyAI/best-skills) | CC-BY-4.0 | 1 |
 | [Nutlope/hallmark](https://github.com/Nutlope/hallmark) | MIT | 1 |
 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files) | MIT | 1 |
+| [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | MIT | 1 |
 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | MIT | 25 |
 | [affaan-m/ecc](https://github.com/affaan-m/ecc) | MIT | 71 |
 | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | 14 |
@@ -60,3 +61,5 @@ Skills listed as "installed from source" in the catalog have no licence that all
 `agents/claude/` holds the 283 agents of [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) (The Agency, MIT, copyright AgentLand Contributors), copied unchanged from commit `b859c515d813efcfc4755d3471dd9e7686c7706d`. `agents/codex/` holds the same agents converted to Codex's custom-agent TOML format by `maintenance/build_agents.py` (name, description and the agent's instructions, nothing else changed). Licence in `licenses/msitarzewski__agency-agents.txt`.
 
 `agents/claude/ads/` holds the 23 worker agents of [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) (MIT), from commit `fc3908e786c318776df89a3a098333da377364be`, the same commit as its skills. They are copied unchanged except that references to the skill's own folder (`ads/SKILL.md`, `ads/references/`) now point to its folder name in this library (`claude-ads-ads/...`). Its two maintainer-only agents (`release-verifier`, `skill-reviewer`) are left out. Licence in `licenses/AgriciDaniel__claude-ads.txt`.
+
+`agent-reach` comes from [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) at commit `c70ae6da5d39bc90e09ad2ae0575ccc89f31e284` (MIT; copyright Agent Eyes). Upstream `agent_reach/skill/SKILL_en.md` becomes `SKILL.md`, with version 1.6.1 filled in, the generated channel table replaced by a pointer to `agent-reach channels`, and a first-time setup note added. Its three reference files are copied unchanged. Licence: `licenses/Panniantong__Agent-Reach.txt`.
