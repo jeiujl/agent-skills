@@ -19,6 +19,8 @@ Then **read the scan results** (`build/scan.json`) and any new or changed script
 
 The 11 `sales` skills (`contract-writer`, `follow-up`, `forecaster`, `pipeline`, `proposal-writer`, `prospector`, `record-keeper`, `researcher`, `sales-coach`, `scheduler`, `win-back`) were added by hand from [Jakeschincariol/closer-skill](https://github.com/Jakeschincariol/closer-skill) at commit `0b0107690e202010710a59eb7d0b47d331255e59`, with their rows in `index.tsv`, `catalog.json`, `CATALOG.md` and `profiles/core.txt`. Keep their folder names unchanged: their scripts load `../pipeline/deals.py` by relative path.
 
+`ai-ads-strategist` was added by hand from [zubair-trabzada/ai-ads-claude](https://github.com/zubair-trabzada/ai-ads-claude) at commit `d1df3f544249191cbc600c8301e2b9d5ddd121c8`: upstream `ads/SKILL.md` plus the added frontmatter and layout note is `SKILL.md`, and upstream `skills/`, `agents/` and `scripts/` (with `requirements.txt` moved into `scripts/`) are copied into the folder, with `~/.claude/skills/ads/` rewritten to `~/.claude/skills/ai-ads-strategist/`. Copy it back after a rebuild.
+
 `reverse-engineer-anything` was also added by hand, from the npm package `rea-agents` (it ships in `package/skills/`). To update it, download the new version's tarball, check its hash against `npm view rea-agents@<version> dist.integrity`, copy `package/skills/reverse-engineer-anything` over `library/`, and change `REA_VERSION` in `install.sh` and `$ReaVersion` in `install.ps1` to the same version, so the skill and the server always match.
 
 ## Agents

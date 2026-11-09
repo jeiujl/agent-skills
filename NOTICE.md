@@ -38,6 +38,7 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 | [obra/superpowers](https://github.com/obra/superpowers) | MIT | 15 |
 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 | 1 |
 | [prisma/skills](https://github.com/prisma/skills) | MIT | 10 |
+| [zubair-trabzada/ai-ads-claude](https://github.com/zubair-trabzada/ai-ads-claude) | MIT | 1 (15 sub-skills bundled) |
 | [supabase/agent-skills](https://github.com/supabase/agent-skills) | MIT | 2 |
 | [trailofbits/skills](https://github.com/trailofbits/skills) | CC-BY-SA-4.0 | 35 |
 | [uizze/uizze](https://github.com/uizze/uizze) | MIT | 5 |
@@ -49,6 +50,8 @@ The skills in `library/` are copied unchanged from the projects below (apart fro
 Added by hand from files the repo owner supplied, also unchanged: `learn` (Anthropic, Apache-2.0; licence in `library/learn/LICENSE.txt`), `study-guide-builder` and `false-flag-humanizer` (supplied by the owner, no licence file).
 
 Skills listed as "installed from source" in the catalog have no licence that allows copying them here, so the installer downloads them from their own repository, pinned to the commit that was reviewed.
+
+`ai-ads-strategist` bundles all of [zubair-trabzada/ai-ads-claude](https://github.com/zubair-trabzada/ai-ads-claude) (MIT, commit `d1df3f544249191cbc600c8301e2b9d5ddd121c8`) as one skill: its orchestrator `ads/SKILL.md` became `SKILL.md` (with frontmatter and a short note on the layout added, since upstream has none), and its 15 sub-skills, 5 agent briefs and PDF script sit unchanged in `skills/`, `agents/` and `scripts/`, apart from the PDF script's path (`~/.claude/skills/ads/` → `~/.claude/skills/ai-ads-strategist/`). Licence in `licenses/zubair-trabzada__ai-ads-claude.txt`.
 
 `reverse-engineer-anything` is copied unchanged from the published npm package `rea-agents` 6.8.0 (the release `--setup-rea` installs), from [morluto/rea](https://github.com/morluto/rea), MIT; licence in `licenses/morluto__rea.txt`.
 

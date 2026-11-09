@@ -1,6 +1,6 @@
 # Catalog
 
-500 skills in `library/`, plus 27 installed from their source repo. **59** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
+501 skills in `library/`, plus 27 installed from their source repo. **60** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -485,10 +485,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | `seo-unlighthouse` | Multi-page Lighthouse audit via the MIT-licensed Unlighthouse CLI. | [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) |  |
 | `site-architecture` | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 
-## Paid ads (`ads`, 36)
+## Paid ads (`ads`, 37)
 
 | Skill | What it does | Source | Needs |
 |---|---|---|---|
+| ★ `ai-ads-strategist` | Full paid-ads strategy from one URL: 5 parallel agents score ad readiness and build personas, copy, funnel, budget and a PDF report. 15 commands in one skill. | [zubair-trabzada/ai-ads-claude](https://github.com/zubair-trabzada/ai-ads-claude) | Python 3 + reportlab (PDF report only) |
 | `ad-creative` | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 | `ads` | When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) |  |
 | `ads-amazon` | Audit Amazon Ads profiles, regions, Sponsored Products, Sponsored Brands, Sponsored Display, DSP, portfolios, targeting, search terms, retail readiness, creative, budgets, ACOS, TA | [AgriciDaniel/claude-ads](https://github.com/AgriciDaniel/claude-ads) |  |

@@ -14,6 +14,8 @@ The 283 agents in `agents/` (The Agency) were scanned with the same checks. They
 
 The 23 ads worker agents from AgriciDaniel/claude-ads (division `ads`, commit `fc3908e`) were scanned with the same checks: no flags, no hidden characters, no scripts. Each declares its tools: 20 may only read files (Read, Glob, Grep), `research-worker` and `source-verifier` may also search and fetch web pages, and `visual-designer` may also write files. The only change from upstream is the path rewrite noted in NOTICE.md.
 
+`ai-ads-strategist` (zubair-trabzada/ai-ads-claude, commit `d1df3f5`) was scanned with the same checks and its PDF script read in full: it uses only the Python standard library plus reportlab, reads the JSON file you give it and writes one PDF, with no network use. The only flags were the `curl … | bash` install line in upstream's README and installer, neither of which is copied here. Its skills tell Claude to use web search and fetch on the business being analysed and its competitors. Its CPM, CPC, CPA and ROAS figures are industry estimates, so the added note in `SKILL.md` says to label them as estimates for clients.
+
 `library-router` was written for this library. It is instructions only: it reads this repo's `catalog.json`, `index.tsv` and `agents/index.tsv`, then the 1-3 skill or agent files it picks, and never runs the installers without asking. The installers fill in the repo's location in its `SKILL.md` when they copy it.
 
 The 11 Closer sales skills (`sales` category, from Jakeschincariol/closer-skill at commit `0b01076`) were scanned with the same checks (no flags) and every SKILL.md and script was read in full. The scripts use only the Python standard library and write only inside a `closer/` folder in your project (the pipeline file, leads, briefs, proposals, contracts, call notes, calendar `.ics` files), with file names built from cleaned-up contact names. Two of them read the internet: `prospector` fetches one public page per prospect website and `researcher` up to four, each with a 15-second timeout and a user agent that names the project; neither sends anything else. `contract-writer` runs your own Chrome in headless mode to print the contract to PDF. No script sends email: the instructions draft every email, invite and contract and send it through Claude's Gmail and Calendar connectors only after your explicit "yes" for that one message (never "yes to all"), and a scheduled run never sends. `sales-coach` reads live call captions as text and tells you to let everyone on the call know first, since some places require everyone's consent. Their bundled unit tests were not run here.
@@ -26,6 +28,7 @@ Most skills are just instructions. These also ship scripts that Claude may run w
 
 | Skill | Scripts | Network (from its scripts) | Needs |
 |---|---|---|---|
+| `ai-ads-strategist` | 1 | none | reportlab |
 | `algorithmic-art` | 1 | none |  |
 | `anatomy` | 72 | local only |  |
 | `antislop-human` | 2 | none |  |

@@ -574,6 +574,20 @@
   "core": false
  },
  {
+  "name": "ai-ads-strategist",
+  "kind": "library",
+  "category": "ads",
+  "source": "zubair-trabzada/ai-ads-claude",
+  "license": "MIT",
+  "commit": "d1df3f544249191cbc600c8301e2b9d5ddd121c8",
+  "path": "library/ai-ads-strategist",
+  "original": "ads (+ 14 sub-skills, 5 agents)",
+  "desc": "Full paid-ads strategy from one URL: 5 parallel agents score ad readiness and build personas, copy, funnel, budget and a PDF report. 15 commands in one skill.",
+  "needs": "Python 3 + reportlab (PDF report only)",
+  "scripts": true,
+  "core": true
+ },
+ {
   "name": "ai-seo",
   "kind": "library",
   "category": "seo",

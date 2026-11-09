@@ -58,3 +58,4 @@ verification-before-completion
 web-design-guidelines
 win-back
 writing-plans
+ai-ads-strategist

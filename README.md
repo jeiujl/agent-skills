@@ -1,9 +1,9 @@
 # Agent skills
 
-A library of **527 agent skills** and **306 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents) (specialist personas from frontend developer to brand strategist) plus the ads workers from [claude-ads](https://github.com/AgriciDaniel/claude-ads).
+A library of **528 agent skills** and **306 agents** for **Claude Code** and **Codex**. The skills come from 44 open-source projects plus a few added by hand, and focus on design and UI/UX, animation, token savers, and coding workflow, plus marketing, sales, SEO, automation and security. The agents are [The Agency](https://github.com/msitarzewski/agency-agents) (specialist personas from frontend developer to brand strategist) plus the ads workers from [claude-ads](https://github.com/AgriciDaniel/claude-ads).
 
-- **500** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
-- **59** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
+- **501** skills are copied in `library/`. **27** more are downloaded from their own repo when you install them, because their licence doesn't allow copying them here.
+- **60** of the best are the **core set** (`profiles/core.txt`), installed by default. The rest wait in the library until you add them.
 - **306 agents** in `agents/`. The **23** best are installed by default (`profiles/agents-core.txt`); the rest stay in the repo (see [Agents](#agents)).
 - **`library-router`** (a core skill) searches the whole library when a task needs a specialist, and reads only the 1-3 skills or agents that fit. So nothing is ever removed, and you only pay for what a task uses.
 - **REA (Reverse Engineer Anything)**: its skill is in the core set, and `-SetupRea` connects the REA tool itself (see [REA](#rea-reverse-engineer-anything)).
@@ -54,9 +54,9 @@ Use a skill name, a category, or a profile. Commas separate several.
 
 The installer only ever replaces or removes skills *it* installed (it keeps a list in each skills folder), so your own skills are safe. If you already have a skill with the same name, it's skipped.
 
-## Why only 59 skills and 23 agents are active
+## Why only 60 skills and 23 agents are active
 
-Every installed skill's and agent's name and description is loaded into every session, so all 527 skills and 306 agents would cost tens of thousands of tokens each time. They'd also make it harder for Claude to pick the right one. So only the best are installed, and everything else stays in the repo:
+Every installed skill's and agent's name and description is loaded into every session, so all 528 skills and 306 agents would cost tens of thousands of tokens each time. They'd also make it harder for Claude to pick the right one. So only the best are installed, and everything else stays in the repo:
 
 - **`library-router`** finds the right specialist on demand. When a task needs one (a Meta ads audit, programmatic SEO, a niche framework), it searches `catalog.json` and `agents/index.tsv`, then reads only the 1-3 that fit. It tells you which one it used, and suggests installing it if you keep needing it.
 - **Add a category** when a project needs it for a while, such as `-Add seo` for an SEO job.
@@ -69,6 +69,7 @@ Every installed skill's and agent's name and description is loaded into every se
 - **Workflow:** `brainstorming`, `writing-plans`, `executing-plans`, `systematic-debugging`, `test-driven-development`, `verification-before-completion`, `requesting-code-review`, `chief-of-staff`, `grill-me`, `karpathy-guidelines`, `planning-with-files`
 - **Research & skills:** `last30days`, `deep-research`, `skill-creator`, `find-skills`
 - **Marketing:** `marketing-psychology`, `copywriting`, `cro`, `seo-audit`, `ai-seo`, `pricing`
+- **Ads:** `ai-ads-strategist` (15 ad commands and 5 agents in one skill: `/ai-ads-strategist strategy <url>` builds a full ad plan for a business; `quick <url>` is a 60-second check you can run on a prospect)
 - **Automation & security:** `n8n-workflow-patterns`, `agent-browser`, `security-review`, `reverse-engineer-anything` (REA)
 - **Library:** `library-router` (finds anything else in this library on demand)
 - **Learning & writing:** `learn`, `study-guide-builder`, `humanizer`, `false-flag-humanizer`
