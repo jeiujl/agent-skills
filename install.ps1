@@ -21,6 +21,7 @@
   .\install.ps1 -RemoveAgents all      # remove the agents this script installed (or name divisions)
   .\install.ps1 -ListAgents marketing  # list agents in a division
   .\install.ps1 -SetupRea              # also run REA's own setup (needs Node.js 22.23.4+)
+  .\install.ps1 -SetupGraphify         # also install the graphifyy Python package for the graphify skill
   .\install.ps1 -Reset                 # remove every skill and agent this script installed
 
   If Windows blocks the script, run it with:
@@ -43,6 +44,7 @@ param(
   [string[]]$RemoveAgents = @(),
   [switch]$ListAgents,
   [switch]$SetupRea,
+  [switch]$SetupGraphify,
   [switch]$Reset,
   [ValidateSet('claude', 'codex', 'both')][string]$Target = 'both',
   [switch]$List,
@@ -208,6 +210,12 @@ foreach ($dir in $skillDirs) {
       } catch { Write-Warning $_; continue }
       if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
       Copy-Item -Recurse -Path $source -Destination $dest
+      # Some skills ship a Windows version of SKILL.md: use it on Windows, drop it elsewhere
+      $winSkill = Join-Path $dest 'SKILL.windows.md'
+      if (Test-Path $winSkill) {
+        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') { Move-Item -Force $winSkill (Join-Path $dest 'SKILL.md') }
+        else { Remove-Item -Force $winSkill }
+      }
       if (-not $managed.Contains($name)) { $managed.Add($name) }
       Write-Host "  + $name"
     }
@@ -284,6 +292,24 @@ if ($SetupRea) {
   $hasSkill = $false
   foreach ($dir in $Dirs) { if ((Get-Managed $dir) -contains 'reverse-engineer-anything') { $hasSkill = $true } }
   if (-not $hasSkill -and -not $DryRun) { Write-Host '  Note: the REA skill isn''t installed. Add it with .\install.ps1 -Add reverse-engineer-anything' }
+}
+
+if ($SetupGraphify) {
+  Write-Host ''
+  Write-Host 'Graphify setup: installing the graphifyy package (the graphify skill runs it)'
+  if ($DryRun) {
+    Write-Host '  dry run: not installing'
+  } elseif (Get-Command uv -ErrorAction SilentlyContinue) {
+    & uv tool install --upgrade graphifyy
+  } elseif (Get-Command pipx -ErrorAction SilentlyContinue) {
+    & pipx install --force graphifyy
+  } elseif (Get-Command py -ErrorAction SilentlyContinue) {
+    & py -m pip install --user --upgrade graphifyy
+  } elseif (Get-Command python -ErrorAction SilentlyContinue) {
+    & python -m pip install --user --upgrade graphifyy
+  } else {
+    Write-Warning 'Graphify needs Python 3.10+ (https://www.python.org/downloads/). Install it, then run .\install.ps1 -SetupGraphify again.'
+  }
 }
 
 Write-Host ''

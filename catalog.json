@@ -2651,11 +2651,11 @@
   "category": "tokens",
   "source": "Graphify-Labs/graphify",
   "license": "Apache-2.0",
-  "commit": "92741d162b2094ffc2fed58cfbd8ee823e9da62c",
+  "commit": "6c8002eca4acad58db6160eabcb466e61fc35afb",
   "path": "graphify",
   "original": "graphify",
   "desc": "Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a gr",
-  "needs": "pip install graphifyy && graphify install",
+  "needs": "Python 3.10+ and the graphifyy package (install.ps1 -SetupGraphify)",
   "scripts": false,
   "core": true
  },

@@ -31,6 +31,7 @@ DO_LIST_AGENTS=0
 PROFILE_GIVEN=0
 NO_AGENTS=0
 SETUP_REA=0
+SETUP_GRAPHIFY=0
 WANT=()
 DROP=()
 AGENT_WANT=()
@@ -64,6 +65,10 @@ REA (Reverse Engineer Anything)
                          which registers its MCP server with your agents. Needs
                          Node.js 22.23.4+, 24.22.1+ or 26.12.1+. Never run by default.
 
+Graphify
+  --setup-graphify       Also install the graphifyy Python package that the graphify
+                         skill uses (via uv, pipx or pip). Needs Python 3.10+.
+
   --reset                Remove every skill and agent this script installed
   --target claude|codex|both
                          Where to install (default: both)
@@ -96,6 +101,7 @@ while [ $# -gt 0 ]; do
     --list) DO_LIST=1; if has_value "$@"; then LIST="$2"; shift; fi; shift ;;
     --list-agents) DO_LIST_AGENTS=1; if has_value "$@"; then LIST_AGENTS="$2"; shift; fi; shift ;;
     --setup-rea) SETUP_REA=1; shift ;;
+    --setup-graphify) SETUP_GRAPHIFY=1; shift ;;
     --dry-run) DRY_RUN=1; shift ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown option: $1" >&2; usage >&2; exit 1 ;;
@@ -201,6 +207,8 @@ install_one() {
   fi
   rm -rf "${dir:?}/$name"
   cp -R "$src" "$dir/$name"
+  # Some skills ship a Windows version of SKILL.md; only install.ps1 uses it
+  rm -f "$dir/$name/SKILL.windows.md"
   mark_managed "$dir" "$name"
   echo "  + $name"
 }
@@ -330,7 +338,22 @@ if [ "$SETUP_REA" = 1 ]; then
   [ "$rea_skill" = 1 ] || [ "$DRY_RUN" = 1 ] || echo "  Note: the REA skill isn't installed. Add it with ./install.sh --add reverse-engineer-anything"
 fi
 
+setup_graphify() {
+  echo
+  echo "Graphify setup: installing the graphifyy package (the graphify skill runs it)"
+  if [ "$DRY_RUN" = 1 ]; then echo "  dry run: not installing"; return 0; fi
+  if command -v uv >/dev/null; then uv tool install --upgrade graphifyy
+  elif command -v pipx >/dev/null; then pipx install --force graphifyy
+  elif command -v python3 >/dev/null; then python3 -m pip install --user --upgrade graphifyy
+  else
+    echo "  ! Graphify needs Python 3.10+ (https://www.python.org/downloads/). Install it, then run ./install.sh --setup-graphify again." >&2
+    return 1
+  fi
+}
+GRAPHIFY_FAILED=0
+if [ "$SETUP_GRAPHIFY" = 1 ]; then setup_graphify || GRAPHIFY_FAILED=1; fi
+
 echo
 echo "Done. Restart Claude Code / Codex to pick up the changes."
 echo "Every installed skill and agent adds its description to each session, so keep the active set lean."
-[ "$REA_FAILED" = 0 ] || exit 1
+[ "$REA_FAILED" = 0 ] && [ "$GRAPHIFY_FAILED" = 0 ] || exit 1

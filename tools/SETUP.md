@@ -47,11 +47,14 @@ uv tool install browser-use   # the CLI the skills use
 Needs Python and [uv](https://docs.astral.sh/uv/).
 
 ## Graphify: knowledge graph of a codebase (saves tokens)
-Builds a graph of a folder so Claude can answer questions about it without re-reading every file. The `graphify` skill in this library needs the package:
+Builds a knowledge graph of a folder (code, docs, PDFs, images, even video transcripts) so Claude and Codex can answer questions about it from the graph instead of re-reading every file. The `graphify` skill in this library's core set runs the `graphifyy` Python package (two y's), which needs Python 3.10+. Install it with the installer:
 ```
-pip install graphifyy && graphify install
+.\install.ps1 -SetupGraphify          # Windows
+./install.sh --setup-graphify          # Mac / Linux
 ```
-(The package is temporarily called `graphifyy` with two y's.)
+That uses uv, pipx or pip, whichever you have (uv is best: `uv tool install graphifyy`). Then, in a project, type `/graphify .` once; after that the skill answers architecture and "where is / what calls" questions from `graphify-out/`, and `/graphify . --update` refreshes it after changes. On Windows the installer puts graphify's Windows version of the skill in place automatically.
+
+Don't also run `graphify install`: it writes its own copy of the same skill into your skills folder, and this repo's installer already does that (it would just overwrite it on the next run).
 
 ## context-mode: keeps big tool output out of the context window (saves tokens)
 An MCP server plus hooks that store large outputs outside the conversation and let Claude search them. Its skills need the server, so they aren't in this library.

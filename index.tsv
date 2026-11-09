@@ -188,7 +188,7 @@ git-workflow-and-versioning	library	workflow	addyosmani/agent-skills	aeac41d4d00
 github-ops	library	workflow	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/github-ops
 github-triage	library	security	trailofbits/skills	196a9073ab10d35bacf111f945e02c00b2c6883a	plugins/github-triage/skills/github-triage
 google-workspace-ops	library	workflow	affaan-m/ecc	90606c8315ee09cafc303515c5f33024db6b9882	skills/google-workspace-ops
-graphify	library	tokens	Graphify-Labs/graphify	92741d162b2094ffc2fed58cfbd8ee823e9da62c	graphify
+graphify	library	tokens	Graphify-Labs/graphify	6c8002eca4acad58db6160eabcb466e61fc35afb	graphify
 grill-me	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/productivity/grill-me
 grill-with-docs	library	writing	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/engineering/grill-with-docs
 grilling	library	workflow	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d15c295c2	skills/productivity/grilling

@@ -31,3 +31,7 @@ python3 -I maintenance/build_agents.py /tmp/agency "$(git -C /tmp/agency rev-par
 ```
 
 It reads only the division folders listed in the checkout's `divisions.json`, copies the agent files to `agents/claude/` unchanged, writes Codex `.toml` versions to `agents/codex/` (checking each one parses back to the same text), and rewrites `agents/index.tsv`, which the installers read. Scan the new files (the same rules as `scan.py`) before committing, then update the agent counts in `README.md`, the agents list in `CATALOG.md` and the commit in `NOTICE.md`. Agents removed upstream are removed from people's machines the next time they run the installer.
+
+## Graphify
+
+`library/graphify` is updated by hand from [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify): `graphify/skill.md` becomes `SKILL.md`, `graphify/skill-windows.md` becomes `SKILL.windows.md` (install.ps1 swaps it in on Windows; install.sh deletes it), and `graphify/skills/claude/references/` becomes `references/`. Update the commit in `index.tsv` and `catalog.json` when you refresh it. The skill needs the `graphifyy` package, which `--setup-graphify` / `-SetupGraphify` installs.

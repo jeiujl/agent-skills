@@ -69,7 +69,7 @@ Every installed skill's name and description is loaded into every session, so 50
 - **Learning & writing:** `learn`, `study-guide-builder`, `humanizer`, `false-flag-humanizer`
 - **Sales (Closer):** `prospector`, `researcher`, `follow-up`, `scheduler`, `sales-coach`, `proposal-writer`, `contract-writer`, `pipeline`, `record-keeper`, `win-back`, `forecaster`. Install or remove these 11 together (`-Add sales` / `-Remove sales`): they share one CRM, and the others need `pipeline` next to them.
 
-Edit `profiles/core.txt` to change it. Some skills need an extra tool or API key; see the **Needs** column in the catalog (e.g. `graphify` needs `pip install graphifyy`).
+Edit `profiles/core.txt` to change it. Some skills need an extra tool or API key; see the **Needs** column in the catalog (e.g. `graphify` needs its Python package: run `.\install.ps1 -SetupGraphify` or `./install.sh --setup-graphify`).
 
 ## Update
 
