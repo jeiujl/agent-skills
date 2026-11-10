@@ -1,6 +1,6 @@
 # Catalog
 
-502 skills in `library/`, plus 27 installed from their source repo. **60** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
+503 skills in `library/`, plus 27 installed from their source repo. **61** are in the core set (★), installed by default. The 306 agents are listed [at the end](#agents); 23 of them are installed by default. The core skill `library-router` picks anything else from this catalog when a task needs it.
 
 Install any of them by name or by category, e.g. `./install.sh --add gsap-timeline` or `./install.sh --add motion` (Windows: `.\install.ps1 -Add motion`).
 
@@ -549,10 +549,11 @@ The [Closer](https://github.com/Jakeschincariol/closer-skill) suite: 11 skills t
 | ★ `learn` | Use this skill when the user wants intellectual understanding — learning how or why something works, not getting a task done or soliciting Claude's judgment. | Anthropic · supplied by owner |  |
 | ★ `study-guide-builder` | Turns course materials (lecture slides, notes, PDFs, textbook chapters, syllabi, past exams, problem sets, recordings' transcripts) into a study guide shaped to the learner's prefe | supplied by owner | Python 3 |
 
-## Automation & browser agents (`automation`, 20)
+## Automation & browser agents (`automation`, 21)
 
 | Skill | What it does | Source | Needs |
 |---|---|---|---|
+| ★ `agent-system-blueprints` | Design a done-for-you AI agent system for a client from 11 worked blueprints (sales, marketing, social, ads, finance, research, store, trades office, company brain) and their shared patterns. | jeiujl (written for this library) |  |
 | ★ `agent-browser` | Browser automation CLI for AI agents. | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) | npm i -g agent-browser |
 | ★ `n8n-workflow-patterns` | Proven workflow architectural patterns from real n8n workflows. | [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) |  |
 | `browser-qa` | Run automated post-deploy UI verification with a browser automation MCP (claude-in-chrome, Playwright, or Puppeteer): console-error and Core Web Vitals smoke checks, form and auth- | [affaan-m/ecc](https://github.com/affaan-m/ecc) |  |

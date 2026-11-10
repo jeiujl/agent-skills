@@ -574,6 +574,20 @@
   "core": false
  },
  {
+  "name": "agent-system-blueprints",
+  "kind": "library",
+  "category": "automation",
+  "source": "jeiujl (written for this library)",
+  "license": "",
+  "commit": "",
+  "path": "library/agent-system-blueprints",
+  "original": "agent-system-blueprints",
+  "desc": "Design a done-for-you AI agent system for a client from 11 worked blueprints (sales, marketing, social, ads, finance, research, store, trades office, company brain) and their shared patterns.",
+  "needs": "",
+  "scripts": false,
+  "core": true
+ },
+ {
   "name": "agentic-actions-auditor",
   "kind": "library",
   "category": "security",

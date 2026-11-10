@@ -54,6 +54,8 @@ Skills listed as "installed from source" in the catalog have no licence that all
 
 `ai-ads-strategist` bundles all of [zubair-trabzada/ai-ads-claude](https://github.com/zubair-trabzada/ai-ads-claude) (MIT, commit `d1df3f544249191cbc600c8301e2b9d5ddd121c8`) as one skill: its orchestrator `ads/SKILL.md` became `SKILL.md` (with frontmatter and a short note on the layout added, since upstream has none), and its 15 sub-skills, 5 agent briefs and PDF script sit unchanged in `skills/`, `agents/` and `scripts/`, apart from the PDF script's path (`~/.claude/skills/ads/` → `~/.claude/skills/ai-ads-strategist/`). Licence in `licenses/zubair-trabzada__ai-ads-claude.txt`.
 
+`agent-system-blueprints` was written for this library. Its `references/` summarise, in our own words, the 11 public blueprint pages of ReStructure AI Europe (re-structure.ai/eu/en/newsletter, read on Nov 10, 2026); no text or images were copied, and their figures are marked as their claims.
+
 `reverse-engineer-anything` is copied unchanged from the published npm package `rea-agents` 6.8.0 (the release `--setup-rea` installs), from [morluto/rea](https://github.com/morluto/rea), MIT; licence in `licenses/morluto__rea.txt`.
 
 ## Agents

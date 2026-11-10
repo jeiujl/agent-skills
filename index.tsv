@@ -528,3 +528,4 @@ writing-shape	library	writing	mattpocock/skills	5beb35b040e3de97e54fa9e386d7e42d
 writing-skills	library	writing	obra/superpowers	2ce8aa15d05bd57213e6f746f953aafb7ded7a8b	skills/writing-skills
 xlsx	remote	writing	anthropics/skills	dbd4588f9e1033efb41dad4bef2f7947c8993d44	skills/xlsx
 ai-ads-strategist	library	ads	zubair-trabzada/ai-ads-claude	d1df3f544249191cbc600c8301e2b9d5ddd121c8	.
+agent-system-blueprints	library	automation	jeiujl (written for this library)		library/agent-system-blueprints
